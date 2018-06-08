@@ -25,6 +25,6 @@ class TargetsController < ApplicationController
 
   def target_params
     params.require(:target).permit(:name, :description, :target_type_id)
-      .merge({ project_id: params[:project_id] })
+          .merge(project_id: params[:project_id])
   end
 end
