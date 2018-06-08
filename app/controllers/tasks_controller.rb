@@ -13,7 +13,7 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to @task.project
     else
-      render @task
+      render 'new'
     end
   end
 
