@@ -1,0 +1,7 @@
+<h1><%= @project.name %></h1>
+
+<ul>
+  <%= @targets.each do |target| %>
+    <li><h2><%= target.name %></h2></li>
+  <% end %>
+</ul>

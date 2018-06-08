@@ -5,12 +5,8 @@ cache: bundler
 services:
   - postgresql
 before_script:
-<<<<<<< HEAD
-  - bundle exec rake db:create db:schema:load db:migrate
-=======
   - gem install rubocop
   - bundle exec rake db:create db:schema:load db:migrate
 script:
   - rubocop
   - bin/rake
->>>>>>> master
