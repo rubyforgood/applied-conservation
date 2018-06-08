@@ -1,7 +1,8 @@
 language: ruby
 rvm:
  - 2.5.1
+cache: bundler
 services:
   - postgresql
 before_script:
-  - rake db:create db:schema:load db:migrate
+  - bundle exec rake db:create db:schema:load db:migrate
