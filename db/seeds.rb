@@ -9,14 +9,16 @@
 project1 = Project.create(name: "Bob's Project",
                          description: "This project is about Bob's Lake and surrounding ecology")
 
+target_type = TargetType.create(name: 'Lake')
+
 Target.create(name: "Bob's Lake",
-              target_type: "lake",
+              target_type_id: target_type.id,
               description: "Bob's Lake is small lake outside Washington DC that is home to many unqiue and migratory birds. etc.",
               project: project1)
 
 project2 = Project.create(name: "Emily's Project",
                          description: "This project is about Emily's Lake and surrounding ecology")
 Target.create(name: "Emily's Lake",
-              target_type: "lake",
+              target_type_id: target_type.id,
               description: "Emily's Lake is small lake outside Washington DC that is home to many unqiue and migratory birds. etc.",
               project: project2)
