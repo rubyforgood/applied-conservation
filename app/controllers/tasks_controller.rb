@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class TasksController < ApplicationController
-  before_action :get_project, only: [:new, :create]
+  before_action :find_project, only: %i[new create]
 
   def new
     @task = @project.tasks.new
     @users = User.all
-  end    
+  end
 
   def create
     @task = @project.tasks.new(task_params)
@@ -12,18 +14,17 @@ class TasksController < ApplicationController
       redirect_to @task.project
     else
       render @task
-    end  
-  end  
+    end
+  end
 
   private
 
   def task_params
-    params.require(:task).permit(:name, :description, :due_on, :project_id, :user_id)
+    params.require(:task).permit(:name, :description,
+                                 :due_on, :project_id, :user_id)
   end
-  
-  def get_project
+
+  def find_project
     @project = Project.find(params[:project_id])
   end
 end
-
-

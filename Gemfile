@@ -16,6 +16,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'rubocop', require: false
+  gem 'selenium-webdriver'
   gem 'shoulda-matchers', '~> 3.1'
 end
 
