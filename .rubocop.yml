@@ -1,0 +1,21 @@
+AllCops:
+  TargetRubyVersion: 2.3
+  Exclude:
+    - 'config.ru'
+    - '.git/**/*'
+    - 'Rakefile'
+    - 'bin/**/*'
+    - 'config/**/*'
+    - 'db/**/*'
+    - 'lib/**/*'
+    - 'log/**/*'
+    - 'script/**/*'
+    - 'spec/**/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+
+Style/Documentation:
+  Enabled: false
+
+Style/DocumentationMethod:
+  Enabled: false
