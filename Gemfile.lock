@@ -59,8 +59,6 @@ GEM
       rack (>= 1.6.0)
       rack-test (>= 0.6.3)
       xpath (~> 3.1)
-    childprocess (0.9.0)
-      ffi (~> 1.0, >= 1.0.11)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
     devise (4.4.3)
@@ -167,10 +165,6 @@ GEM
       unicode-display_width (~> 1.0, >= 1.0.1)
     ruby-progressbar (1.9.0)
     ruby_dep (1.5.0)
-    rubyzip (1.2.1)
-    selenium-webdriver (3.12.0)
-      childprocess (~> 0.5)
-      rubyzip (~> 1.2)
     shoulda-matchers (3.1.2)
       activesupport (>= 4.0.0)
     sprockets (3.7.1)
@@ -212,7 +206,6 @@ DEPENDENCIES
   rails (~> 5.2.0)
   rspec-rails
   rubocop
-  selenium-webdriver
   shoulda-matchers (~> 3.1)
   web-console (>= 3.3.0)
 

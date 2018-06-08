@@ -17,7 +17,7 @@ group :development, :test do
   gem 'rubocop', require: false
   gem 'shoulda-matchers', '~> 3.1'
   gem "capybara"
-  gem "selenium-webdriver"
+  # gem "selenium-webdriver"
 end
 
 group :development do
