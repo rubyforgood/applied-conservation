@@ -1,0 +1,133 @@
+@mixin clearfix {
+	&:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+}
+
+%clearfix {
+	@include clearfix;
+}
+@mixin hover-state {
+	&:hover,
+	&:active,
+	&:focus {
+		@content;
+	}
+}
+
+@mixin side-lined (
+  $height: 1px,
+  $space: 0.5em,
+  $color: inherit,
+  $style: solid,
+  $v-adjust: false,
+  $double: false
+) {
+
+  display: block;
+  overflow: hidden;
+  text-align: center;
+
+  &:before,
+  &:after {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    width: 50%;
+
+    border-top-style: $style;
+    border-top-width: $height;
+
+    @if $color != inherit {
+      border-top-color: $color;
+    }
+
+    @if $v-adjust != false {
+      bottom: $v-adjust;
+    }
+
+    @if $double != false {
+      height: $double;
+      border-bottom-style: $style;
+      border-bottom-width: $height;
+      @if $color != inherit {
+        border-bottom-color: $color;
+      }
+    }
+  }
+
+  &:before {
+    right: $space;
+    margin-left: -50%;
+  }
+  &:after {
+    left: $space;
+    margin-right: -50%;
+  }
+
+}
+
+//   REM + PX Fallback
+//   Developed by Hugo Giraudel (@HugoGiraudel)
+//   Inspired by Hans Christian Reini (@drublic)
+//   Refined by Moving Primates (@movingprimates) & James Kyle (@thejameskyle)
+
+$root-font-size: 16;
+
+@function parseInt($n) {
+	@return $n / ($n * 0 + 1);
+}
+
+@mixin rem($property, $values) {
+	$px: ();
+	$rem: ();
+
+	$root: $root-font-size;
+
+	@each $value in $values {
+		@if $value == 0 or $value == auto {
+			$px: append($px, $value);
+			$rem: append($rem, $value);
+		} @else if type-of($value) == number {
+			$unit: unit($value);
+			$val: parseInt($value);
+
+			@if $unit == "px" {
+				$px: append($px, $value);
+				$rem: append($rem,  ($val / $root + rem));
+			}
+
+			@if $unit == "rem" {
+				$px: append($px,  ($val * $root + px));
+				$rem: append($rem, $value);
+			}
+		} @else {
+			$px: append($px, $value);
+			$rem: append($rem, $value);
+		}
+	}
+
+	@if $px == $rem {
+		#{$property}: $px;
+	} @else {
+		#{$property}: $px;
+		#{$property}: $rem;
+	}
+}
+
+@function rem($value) {
+	$root: $root-font-size;
+	$val: parseInt($value);
+	$return: ();
+
+	@if unit($value) == "px" {
+		$return: append($return,  ($val / $root + rem));
+	} @else {
+		$return: append($return,  ($val * $root + px));
+	}
+
+	@return $return;
+}

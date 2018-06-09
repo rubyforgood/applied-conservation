@@ -1,0 +1,14 @@
+button {
+	// removing default button styles
+	appearance: none;
+	border: 0;
+	color: inherit;
+	cursor: pointer;
+	font-family: $font-base;
+	font-size: inherit;
+	padding: 0;
+}
+
+.button-primary {}
+.button-secondary {}
+.button-outline {}

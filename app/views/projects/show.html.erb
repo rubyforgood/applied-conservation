@@ -1,21 +1,52 @@
-<%= link_to 'View all targets', project_targets_url(@project) %>
+<div class="site-wrapper project-view">
+  <main>
+    <header>
+      <h1 class="heading"><%= @project.name %></h1>
+    </header>
+    <section class="next-event">
+      <div class="date">
+        <div class="month">Aug</div>
+        18
+      </div>
+      <div class="details">
+        <h2 class="heading has-sidelines">Next Meeting</h2>
+        <p>Teleconference at 3pm CST <a href="">[more info]</a></p>
+      </div>
+    </section>
+    <section class="tasks">
+      <header>
+        <h2 class="heading has-sidelines">To Do</h2>
+        <button class="filter">see my todos</button>
+      </header>
+      <ul>
+        <% @project.tasks.each do |task| %>
+          <li>
+            <%= task.name %>
+            <%= task.user&.email %>
+            <%= task.due_on %>
+            <%= task.description %>
+            <% if current_user && task.user_id.nil? %>
+              <%= button_to 'Pick-Up Task', project_task_pickup_path(@project, task), id: "pickup-task-#{task.id}", method: :put %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+      <%= link_to "Add New Task", new_project_task_path(@project) %>
+    </section>
+  </main>
 
-<h2><%= @project.name %></h2>
-
-<%= link_to "Add New Task", new_project_task_path(@project) %>
-
-<h3>Tasks</h3>
-
-<ul>
-<% @project.tasks.each do |task| %>
-  <li>
-    <%= task.name %>
-    <%= task.user&.email %>
-    <%= task.due_on %>
-    <%= task.description %>
-    <% if current_user && task.user_id.nil? %>
-      <%= button_to 'Pick-Up Task', project_task_pickup_path(@project, task), id: "pickup-task-#{task.id}", method: :put %>
-    <% end %>
-  </li>
-<% end %>
-</ul>
+  <section class="status-sidebar">
+    <img class="project-image" src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/39377/cacaponriver.jpg' alt=''>
+    <ol class="list-reset status-key">
+      <li class="completed">
+        <%= link_to(project_targets_url(@project)) do %>
+          <span>Capture</span> <em class="has-sidelines">Targets</em>
+        <% end %>
+      </li>
+      <li class="completed"><a href=""><span>Describe</span> <em class="has-sidelines">Target Health</em></a></li>
+      <li class="current"><a href=""><span>Identify</span> <em class="has-sidelines">Threats</em></a></li>
+      <li><a href=""><span>Develop</span> <em class="has-sidelines">Strategies</em></a></li>
+      <li><a href=""><span>Complete</span> <em class="has-sidelines">Assessment</em></a></li>
+    </ol>
+  </section>
+</div>

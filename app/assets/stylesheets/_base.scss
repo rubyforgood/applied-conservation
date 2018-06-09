@@ -1,0 +1,30 @@
+// GLOBAL
+body {
+	background: $color-offwhite;
+	color: $color-offblack;
+	font-family: $font-base;
+	font-size: 100%;
+}
+img {
+	height: auto;
+	max-width: 100%;
+}
+.list-reset {
+	list-style: none;
+	padding-left: 0;
+}
+.sr-only {
+	// Use this class to hide things from the view, but make them accessible for screenreaders 👍🏻
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}
+.is-hidden {
+	// ⚠️ Using this class will hide content from the viewport AND from screenreaders; use sparingly and with thoughtful intention
+	display: none;
+}

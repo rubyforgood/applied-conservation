@@ -15,7 +15,7 @@ feature 'Target management', js: true do
 
   scenario 'User can view all targets for a Project' do
     visit "/projects/#{@project.id}"
-    click_link 'View all targets'
+    click_link 'Capture Targets'
 
     expect(page).to have_text(@project_name)
     expect(page).to have_text(@target_one_name)
@@ -25,7 +25,7 @@ feature 'Target management', js: true do
 
   scenario 'User can add a new Target' do
     visit "/projects/#{@project.id}"
-    click_link 'View all targets'
+    click_link 'Capture Targets'
     click_link 'Add target'
 
     # make sure autocomplete works
@@ -45,7 +45,7 @@ feature 'Target management', js: true do
 
   scenario 'User can edit a Target' do
     visit "/projects/#{@project.id}"
-    click_link 'View all targets'
+    click_link 'Capture Targets'
     click_link @target_one_name
 
     fill_in('Name', with: 'EDITED TARGET NAME')
