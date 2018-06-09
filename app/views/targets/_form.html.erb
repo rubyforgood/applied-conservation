@@ -1,7 +1,12 @@
 <%= form_for([@project, @target]) do |f| %>
   <div class="field">
     <%= f.label :name %><br />
-    <%= react_component "Autocomplete", {suggestions: Constants::TARGET_OPTIONS, name: 'target[name]', id: 'target_name'} %>
+    <%= react_component "Autocomplete", {
+      suggestions: Constants::TARGET_OPTIONS,
+      name: 'target[name]',
+      id: 'target_name',
+      value:  @target.name,
+    } %>
   </div>
   <div class="field">
     <%= f.label :target_type_id %><br />
