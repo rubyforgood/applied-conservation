@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_09_135521) do
+ActiveRecord::Schema.define(version: 2018_06_09_191908) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(version: 2018_06_09_135521) do
     t.string "description"
     t.bigint "target_type_id"
     t.index ["target_type_id"], name: "index_health_attributes_on_target_type_id"
+  end
+
+  create_table "health_rating_standards", force: :cascade do |t|
+    t.string "rating"
+    t.string "description"
+    t.float "value"
+    t.string "weight"
+    t.string "float"
+    t.boolean "locked", default: false, null: false
   end
 
   create_table "health_ratings", force: :cascade do |t|
