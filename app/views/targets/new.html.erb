@@ -1,18 +1,37 @@
-<%= form_for([@project, @target]) do |f| %>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
+<%= form_for([project, @target]) do |f| %>
   <div class="field">
     <%= f.label :target_type_id %><br />
-    <%= f.collection_select(:target_type_id, TargetType.all, :id, :name, prompt: true) %>
+    <%= f.collection_select(:target_type_id, TargetType.all, :id, :name, { prompt: true }, id: 'target_type_id') %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, id: 'target_name' %>
   </div>
   <div class="field">
     <%= f.label :description %><br />
     <%= f.text_field :description %>
   </div>
   <div class="actions">
-    <%= hidden_field_tag 'project_id', @project.id %>
     <%= f.submit 'Save' %>
   </div>
 <% end %>
+
+<script>
+  (function() {
+    var hasCustomName = false;
+
+    document.querySelector('#target_name').addEventListener('change', function() { hasCustomName = true });
+
+    document
+      .querySelector('#target_type_id')
+      .addEventListener('change', function(event) {
+        var name = document.querySelector('#target_name');
+        if(!hasCustomName) {
+          name.value = event
+            .target
+            .querySelector('option[value="' + event.target.value + '"]')
+            .innerText;
+        }
+      });
+  })();
+</script>

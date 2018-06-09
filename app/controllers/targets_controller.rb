@@ -2,19 +2,17 @@
 
 class TargetsController < ApplicationController
   def index
-    @project = Project.find(params[:project_id])
-    @targets = @project.targets
+    @targets = project.targets
   end
 
   def new
-    @project = Project.find(params[:project_id])
     @target = Target.new
   end
 
   def create
-    @target = Target.create(target_params)
+    @target = project.targets.new(target_params)
 
-    if @target.valid?
+    if @target.save
       redirect_to project_targets_path(@target.project)
     else
       redirect_to :new
@@ -23,8 +21,11 @@ class TargetsController < ApplicationController
 
   private
 
+  helper_method def project
+    @project ||= Project.find(params[:project_id])
+  end
+
   def target_params
     params.require(:target).permit(:name, :description, :target_type_id)
-          .merge(project_id: params[:project_id])
   end
 end
