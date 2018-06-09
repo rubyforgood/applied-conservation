@@ -1,14 +1,14 @@
 <%= form_for([@project, @target]) do |f| %>
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <label for="target_name">Name</label>
+    <%= react_component "Autocomplete", {suggestions: ['Forest', 'pairs'], name: 'target[name]', id: 'target_name'} %>
   </div>
   <div class="field">
-    <%= f.label :target_type_id %><br />
+    <%= f.label :target_type_id %><br/>
     <%= f.collection_select(:target_type_id, TargetType.all, :id, :name, prompt: true) %>
   </div>
   <div class="field">
-    <%= f.label :description %><br />
+    <%= f.label :description %><br/>
     <%= f.text_field :description %>
   </div>
   <div class="actions">

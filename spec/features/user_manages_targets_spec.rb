@@ -1,6 +1,6 @@
 require 'rails_helper' 
 
-feature 'Target management' do
+feature 'Target management', js: true do
   before do
     @project_name    = 'TEST PROJECT'
     @target_one_name = 'TEST TARGET ONE'
@@ -29,7 +29,10 @@ feature 'Target management' do
     click_link 'View all targets'
     click_link 'Add target'
 
-    # Target Form Page
+    # make sure autocomplete works
+    find('.Select-control').click
+    expect(page).to have_content('Forest')
+
     fill_in('Name', with: 'NEW TARGET')
     select('Terrestrial Ecosystem', from: 'target[target_type_id]')
     fill_in('Description', with: 'TARGET DESCRIPTION')
