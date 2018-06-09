@@ -13,3 +13,5 @@ before_script:
 script:
   - rubocop
   - bin/rake
+addons:
+  chrome: stable

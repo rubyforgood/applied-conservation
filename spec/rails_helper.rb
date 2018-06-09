@@ -6,9 +6,17 @@ require 'rspec/rails'
 
 ActiveRecord::Migration.maintain_test_schema!
 
+run_with_gui = ENV['SELENIUM_HEADLESS_OFF'] == 'true'
+default_args = run_with_gui.present? ? [] : %w(headless disable-gpu no-sandbox)
+
 Capybara.register_driver :chrome do |app|
-  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+  options = Selenium::WebDriver::Chrome::Options.new(
+    args: default_args + %w[--window-size=1366,768],
+    logging_prefs: {browser: 'ALL'},
+  )
+  Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
 end
+
 Capybara.javascript_driver = :chrome
 
 RSpec.configure do |config|
