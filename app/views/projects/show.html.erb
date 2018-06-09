@@ -1,0 +1,18 @@
+<%= link_to 'View all targets', project_targets_url(@project) %>
+
+<h2><%= @project.name %></h2>
+
+<%= link_to "Add New Task", new_project_task_path(@project) %>
+
+<h3>Tasks</h3>
+
+<ul>
+<% @project.tasks.each do |task| %>
+  <li>
+    <%= task.name %>
+    <%= task.user&.email %>
+    <%= task.due_on %>
+    <%= task.description %>
+  </li>
+<% end %>
+</ul>

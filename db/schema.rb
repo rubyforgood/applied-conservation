@@ -10,10 +10,59 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_08_143501) do
+ActiveRecord::Schema.define(version: 2018_06_09_135521) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "health_ratings", force: :cascade do |t|
+    t.string "rating"
+    t.string "description"
+    t.float "value"
+    t.string "weight"
+    t.string "float"
+    t.boolean "locked", default: false, null: false
+    t.bigint "target_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["target_id"], name: "index_health_ratings_on_target_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "target_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "targets", force: :cascade do |t|
+    t.text "description"
+    t.string "name"
+    t.bigint "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "target_type_id"
+    t.index ["project_id"], name: "index_targets_on_project_id"
+    t.index ["target_type_id"], name: "index_targets_on_target_type_id"
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description"
+    t.date "due_on"
+    t.bigint "project_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_tasks_on_project_id"
+    t.index ["user_id"], name: "index_tasks_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -30,23 +79,6 @@ ActiveRecord::Schema.define(version: 2018_06_08_143501) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
-  create_table "projects", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "targets", force: :cascade do |t|
-    t.string "type"
-    t.text "description"
-    t.string "name"
-    t.bigint "project_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["project_id"], name: "index_targets_on_project_id"
   end
 
   add_foreign_key "targets", "projects"
