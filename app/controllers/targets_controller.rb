@@ -15,7 +15,7 @@ class TargetsController < ApplicationController
     @target = Target.create(target_params)
 
     if @target.valid?
-      redirect_to projects_path(@target.project)
+      redirect_to project_targets_path(@target.project)
     else
       render :error
     end
