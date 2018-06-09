@@ -17,7 +17,7 @@ class TargetsController < ApplicationController
     if @target.valid?
       redirect_to project_targets_path(@target.project)
     else
-      render :error
+      redirect_to :new
     end
   end
 

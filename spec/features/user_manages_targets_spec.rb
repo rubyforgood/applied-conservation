@@ -29,13 +29,13 @@ feature 'Target management' do
     click_link 'View all targets'
     click_link 'Add target'
 
-    # Target For Pag
+    # Target Form Page
     fill_in('Name', with: 'NEW TARGET')
     select('Terrestrial Ecosystem', from: 'target[target_type_id]')
     fill_in('Description', with: 'TARGET DESCRIPTION')
     click_button('Save')
 
-    # expect(page).to have_text('NEW TARGET')
-    # expect(current_path).to eq "projects/#{@project.id}/targets"
+    expect(page).to have_text('NEW TARGET')
+    expect(current_path).to eq "/projects/#{@project.id}/targets"
   end
 end
