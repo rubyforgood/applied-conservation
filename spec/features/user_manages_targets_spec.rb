@@ -1,6 +1,6 @@
-require 'rails_helper' 
+require 'rails_helper'
 
-feature 'Target management' do
+feature 'Target management', js: true do
   before do
     @project_name    = 'TEST PROJECT'
     @target_one_name = 'TEST TARGET ONE'
@@ -28,7 +28,13 @@ feature 'Target management' do
     click_link 'View all targets'
     click_link 'Add target'
 
+    # make sure autocomplete works
+    find('.Select-control').click
+    expect(page).to have_content('Forest')
+
+    # TODO: pull put into helper select from autosuggest
     fill_in('Name', with: 'NEW TARGET')
+    find('.Select-create-option-placeholder').click
     select('Terrestrial Ecosystem', from: 'target[target_type_id]')
     fill_in('Description', with: 'TARGET DESCRIPTION')
     click_button('Save')
@@ -43,6 +49,7 @@ feature 'Target management' do
     click_link @target_one_name
 
     fill_in('Name', with: 'EDITED TARGET NAME')
+    find('.Select-create-option-placeholder').click
     select('Terrestrial Ecosystem', from: 'target[target_type_id]')
     fill_in('Description', with: 'TARGET DESCRIPTION')
     click_button('Save')

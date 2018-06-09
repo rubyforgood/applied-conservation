@@ -2,6 +2,7 @@ AllCops:
   TargetRubyVersion: 2.3
   Exclude:
     - 'config.ru'
+    - 'node_modules/**/*'
     - '.git/**/*'
     - 'Rakefile'
     - 'bin/**/*'
