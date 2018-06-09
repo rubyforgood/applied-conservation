@@ -48,6 +48,8 @@ feature 'Target management', js: true do
     click_link 'Capture Targets'
     click_link @target_one_name
 
+    expect(page).to have_text(@target_one_name)
+
     fill_in('Name', with: 'EDITED TARGET NAME')
     find('.Select-create-option-placeholder').click
     select('Terrestrial Ecosystem', from: 'target[target_type_id]')
