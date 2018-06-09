@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   resources :projects do
     resources :targets
-    resources :tasks 
+    resources :tasks do
+      put :pickup
+    end
   end
 
   devise_for :users

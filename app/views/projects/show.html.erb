@@ -13,6 +13,9 @@
     <%= task.user&.email %>
     <%= task.due_on %>
     <%= task.description %>
+    <% if current_user && task.user_id.nil? %>
+      <%= button_to 'Pick-Up Task', project_task_pickup_path(@project, task), id: "pickup-task-#{task.id}", method: :put %>
+    <% end %>
   </li>
 <% end %>
 </ul>
