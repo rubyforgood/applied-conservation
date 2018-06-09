@@ -7,7 +7,11 @@ class ProjectsController < ApplicationController
     @projects = Project.all
   end
 
-  def show; end
+  def show
+    @tasks = @project.tasks.reject do |task|
+      task.status == 'Archived'
+    end
+  end
 
   def new
     @project = Project.new

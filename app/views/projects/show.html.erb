@@ -18,19 +18,25 @@
         <h2 class="heading has-sidelines">To Do</h2>
         <button class="filter">see my todos</button>
       </header>
-      <ul>
-        <% @project.tasks.each do |task| %>
-          <li>
-            <%= task.name %>
-            <%= task.user&.email %>
-            <%= task.due_on %>
-            <%= task.description %>
-            <% if current_user && task.user_id.nil? %>
-              <%= button_to 'Pick-Up Task', project_task_pickup_path(@project, task), id: "pickup-task-#{task.id}", method: :put %>
-            <% end %>
-          </li>
+    <ul>
+    <% @tasks.each do |task| %>
+      <li>
+        <%= task.name %>
+        <%= task.user&.email %>
+        <%= task.status %>
+        <%= task.due_on %>
+        <%= task.description %>
+        <% if current_user && task.user_id.nil? %>
+          <%= button_to 'Pick-Up Task', project_task_pickup_path(@project, task), id: "pickup-task-#{task.id}", method: :put %>
+          <%= button_to 'X', project_task_archive_path(@project, task), id: "archive-task-#{task.id}", method: :put %>
         <% end %>
-      </ul>
+        <% if current_user && task.user_id == current_user.id && task.status=='In Progress'%>
+          <%= button_to 'Done', project_task_done_path(@project, task), id: "done-task-#{task.id}", method: :put %>
+          <%= button_to 'X', project_task_archive_path(@project, task), id: "archive-task-#{task.id}", method: :put %>    
+        <% end %>
+      </li>
+    <% end %>
+    </ul>
       <%= link_to "Add New Task", new_project_task_path(@project) %>
     </section>
   </main>
