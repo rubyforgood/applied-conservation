@@ -1,0 +1,2 @@
+class HealthRating < ApplicationRecord
+end
