@@ -16,6 +16,11 @@ class TargetsController < ApplicationController
     @target = Target.find(params[:id])
   end
 
+  def show
+    @target = Target.find(params[:id])
+    @health_attributes = HealthAttribute.where(target_type: @target.target_type)
+  end
+
   def create
     @target = Target.create(target_params)
 

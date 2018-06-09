@@ -1,0 +1,11 @@
+<h1><%= @target.name %></h1>
+
+<ul>
+    <li><h2><%= @target.name %></h2></li>
+</ul>
+<h2>Health Attributes</h2>
+<div>
+  <%= @health_attributes.each do |h| %>
+    <%= h.title %>
+  <% end %>
+</div>
