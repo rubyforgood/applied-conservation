@@ -26,6 +26,12 @@ ActiveRecord::Schema.define(version: 2018_06_09_135521) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["target_id"], name: "index_health_ratings_on_target_id"
+
+  create_table "health_attributes", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.bigint "target_types_id"
+    t.index ["target_types_id"], name: "index_health_attributes_on_target_types_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -81,5 +87,6 @@ ActiveRecord::Schema.define(version: 2018_06_09_135521) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "health_attributes", "target_types", column: "target_types_id"
   add_foreign_key "targets", "projects"
 end
