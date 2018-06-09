@@ -4,7 +4,7 @@ class CreateHealthAttributes < ActiveRecord::Migration[5.2]
       t.string :title
       t.string :description
 
+      t.references :target_type, foreign_key: true
     end
-    add_foreign_key :health_attributes, :target_types
   end
 end

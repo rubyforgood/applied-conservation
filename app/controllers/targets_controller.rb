@@ -17,7 +17,7 @@ class TargetsController < ApplicationController
 
   def show
     @target = Target.find(params[:id])
-    @health_attributes = HealthAttribute.where(target_types_id: @target.target_type_id)
+    @health_attributes = HealthAttribute.where(target_type: @target.target_type)
   end
 
   def create
