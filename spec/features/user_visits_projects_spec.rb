@@ -5,12 +5,13 @@ feature 'Projects' do
     visit root_path
     expect(page).to have_content "Projects"
   end
-  
+
+  before do
+    @project = Project.create(name: 'River Test')
+  end  
+
   scenario 'user visits project show' do
-    before do
-      @project = create :project
-    end  
-    visit @project
+    visit project_path(@project)
     expect(page).to have_content "Add New Task"
   end  
 end
