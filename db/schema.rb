@@ -15,18 +15,6 @@ ActiveRecord::Schema.define(version: 2018_06_09_135521) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "health_ratings", force: :cascade do |t|
-    t.string "rating"
-    t.string "description"
-    t.float "value"
-    t.string "weight"
-    t.string "float"
-    t.boolean "locked", default: false, null: false
-    t.bigint "target_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["target_id"], name: "index_health_ratings_on_target_id"
-
   create_table "health_attributes", force: :cascade do |t|
     t.string "title"
     t.string "description"

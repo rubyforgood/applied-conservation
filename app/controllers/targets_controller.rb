@@ -14,6 +14,7 @@ class TargetsController < ApplicationController
   def edit
     @project = Project.find(params[:project_id])
     @target = Target.find(params[:id])
+  end
 
   def show
     @target = Target.find(params[:id])
