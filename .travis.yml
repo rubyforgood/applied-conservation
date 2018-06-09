@@ -5,7 +5,8 @@ cache: bundler
 services:
   - postgresql
 before_script:
-  - npm install yarn
+  - npm i -g yarn
+  - yarn
   - ./bin/webpack
   - gem install rubocop
   - bundle exec rake db:create db:schema:load db:migrate
