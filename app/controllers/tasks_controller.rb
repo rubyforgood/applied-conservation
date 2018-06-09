@@ -17,6 +17,28 @@ class TasksController < ApplicationController
     end
   end
 
+  def edit
+    @task = Task.find(params[:id])
+  end
+
+  def update
+    @task = Task.find(params[:id])
+    if @task.update(task_params)
+      redirect_to @task.project
+    else
+      render 'edit'
+    end
+  end
+
+  def pickup
+    @task = Task.find(params[:task_id])
+    if @task.update(user: current_user)
+      redirect_to @task.project
+    else
+      render 'edit'
+    end
+  end
+
   private
 
   def task_params
