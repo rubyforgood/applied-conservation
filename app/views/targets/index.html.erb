@@ -1,9 +1,24 @@
 <h1><%= @project.name %></h1>
 
-<ul>
-  <% @targets.each do |target| %>
-    <li><h2><%= target.name %></h2></li>
-  <% end %>
-</ul>
+<h2>Targets</h2>
 
-<%= link_to 'Add target', new_project_target_url(@project) %>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @targets.each do |target| %>
+      <tr>
+        <td><%= link_to "#{target.name}", edit_project_target_path(target.project.id, target.id) %></td>
+        <td><%= target.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Add target', new_project_target_path(@project.id) %>

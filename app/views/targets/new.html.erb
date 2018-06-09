@@ -1,18 +1,5 @@
-<%= form_for([@project, @target]) do |f| %>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :target_type_id %><br />
-    <%= f.collection_select(:target_type_id, TargetType.all, :id, :name, prompt: true) %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </div>
-  <div class="actions">
-    <%= hidden_field_tag 'project_id', @project.id %>
-    <%= f.submit 'Save' %>
-  </div>
-<% end %>
+<h1>Create a New Target</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', project_targets_path(@project) %>
