@@ -33,7 +33,9 @@ feature 'Target management', js: true do
     find('.Select-control').click
     expect(page).to have_content('Forest')
 
+    # TODO: pull put into helper select from autosuggest
     fill_in('Name', with: 'NEW TARGET')
+    find('.Select-create-option-placeholder').click
     select('Terrestrial Ecosystem', from: 'target[target_type_id]')
     fill_in('Description', with: 'TARGET DESCRIPTION')
     click_button('Save')

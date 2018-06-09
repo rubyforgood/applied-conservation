@@ -23,7 +23,7 @@ export default class Autocomplete extends React.Component {
         name={name}
         value={selectedOption}
         onChange={this.handleChange}
-        options={suggestions.map(suggestion => ({label: suggestion, value: suggestion}))}
+        options={suggestions}
       />
     );
   }
