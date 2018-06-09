@@ -7,6 +7,7 @@ class CreateHealthRatings < ActiveRecord::Migration[5.2]
       t.string :weight
       t.string :float
       t.boolean :locked, default: false, null: false
+      t.belongs_to :target
 
       t.timestamps
     end

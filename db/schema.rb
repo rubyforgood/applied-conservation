@@ -22,8 +22,10 @@ ActiveRecord::Schema.define(version: 2018_06_09_135521) do
     t.string "weight"
     t.string "float"
     t.boolean "locked", default: false, null: false
+    t.bigint "target_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["target_id"], name: "index_health_ratings_on_target_id"
   end
 
   create_table "projects", force: :cascade do |t|
