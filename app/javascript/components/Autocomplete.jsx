@@ -4,26 +4,34 @@ import 'react-select/dist/react-select.css';
 
 export default class Autocomplete extends React.Component {
   state = {
-    selectedOption: '',
+    selectedOption: {
+      value: this.props.value,
+      label: this.props.suggestions[this.props.value] || this.props.value,
+    },
   }
 
   handleChange = (selectedOption) => {
     this.setState({ selectedOption });
-    // selectedOption can be null when the `x` (close) button is clicked
-    if (selectedOption) {
-      console.log(`Selected: ${selectedOption.label}`);
-    }
   }
+
+  convertSuggestions = () => {
+    const {suggestions} = this.props
+
+    return Object.keys(suggestions).map(suggestion =>
+      ({ value: suggestion, label: suggestions[suggestion]})
+    )
+  }
+
   render() {
     const { selectedOption } = this.state
-    const {suggestions, name, id}= this.props
+    const { suggestions, name, id }= this.props
     return (
       <Creatable
         id={id}
         name={name}
         value={selectedOption}
         onChange={this.handleChange}
-        options={suggestions}
+        options={this.convertSuggestions()}
       />
     );
   }
