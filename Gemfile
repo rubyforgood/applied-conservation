@@ -30,5 +30,5 @@ end
 
 group :test do
   gem 'capybara'
-  gem "chromedriver-helper"
+  gem 'chromedriver-helper'
 end
