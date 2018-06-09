@@ -10,6 +10,7 @@ feature 'Target management' do
     Target.create(name: @target_one_name, project: @project)
     Target.create(name: @target_two_name, project: @project)
     Target.create(name: 'NOT MY TARGET', project: Project.create)
+    TargetType.create(name: 'Terrestrial Ecosystem')
   end
 
   scenario 'User can view all targets for a Project' do
@@ -23,13 +24,10 @@ feature 'Target management' do
   end
 
   scenario 'User can add a new Target' do
-    TargetType.create(name: 'Terrestrial Ecosystem')
-
     visit "/projects/#{@project.id}"
     click_link 'View all targets'
     click_link 'Add target'
 
-    # Target Form Page
     fill_in('Name', with: 'NEW TARGET')
     select('Terrestrial Ecosystem', from: 'target[target_type_id]')
     fill_in('Description', with: 'TARGET DESCRIPTION')
@@ -37,5 +35,19 @@ feature 'Target management' do
 
     expect(page).to have_text('NEW TARGET')
     expect(current_path).to eq "/projects/#{@project.id}/targets"
+  end
+
+  scenario 'User can edit a Target' do
+    visit "/projects/#{@project.id}"
+    click_link 'View all targets'
+    click_link @target_one_name
+
+    fill_in('Name', with: 'EDITED TARGET NAME')
+    select('Terrestrial Ecosystem', from: 'target[target_type_id]')
+    fill_in('Description', with: 'TARGET DESCRIPTION')
+    click_button('Save')
+
+    expect(page).to have_text('EDITED TARGET NAME')
+    expect(page).not_to have_text(@target_one_name)
   end
 end
