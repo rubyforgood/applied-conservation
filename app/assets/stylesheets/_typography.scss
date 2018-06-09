@@ -1,0 +1,14 @@
+@import "mixins";
+.heading {
+	font-family: $font-display;
+	font-weight: 600;
+
+	section & {
+		color: mix($color-slate, $color-offwhite, 95%);
+		font-weight: 500;
+	}
+}
+
+.has-sidelines {
+	@include side-lined;
+}
