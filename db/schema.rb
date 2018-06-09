@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_09_191908) do
+ActiveRecord::Schema.define(version: 2018_06_09_201224) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "grade_templates", force: :cascade do |t|
+    t.string "name"
+    t.integer "score"
+    t.integer "weight"
+  end
+
+  create_table "grades", force: :cascade do |t|
+    t.string "description"
+    t.bigint "grade_template_id"
+    t.bigint "project_id"
+    t.index ["grade_template_id"], name: "index_grades_on_grade_template_id"
+    t.index ["project_id"], name: "index_grades_on_project_id"
+  end
 
   create_table "health_attributes", force: :cascade do |t|
     t.string "title"
@@ -55,6 +69,7 @@ ActiveRecord::Schema.define(version: 2018_06_09_191908) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "target_id"
   end
 
   create_table "targets", force: :cascade do |t|
@@ -97,6 +112,9 @@ ActiveRecord::Schema.define(version: 2018_06_09_191908) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "grades", "grade_templates"
+  add_foreign_key "grades", "projects"
   add_foreign_key "health_attributes", "target_types"
+  add_foreign_key "target_types", "targets"
   add_foreign_key "targets", "projects"
 end
