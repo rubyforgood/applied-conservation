@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_10_142928) do
+ActiveRecord::Schema.define(version: 2018_06_10_145055) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2018_06_10_142928) do
     t.float "value"
     t.boolean "locked", default: false, null: false
     t.float "weight", default: 0.0, null: false
+    t.integer "target_type_id"
   end
 
   create_table "health_ratings", force: :cascade do |t|
