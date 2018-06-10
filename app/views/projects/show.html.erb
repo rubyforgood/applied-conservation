@@ -11,7 +11,6 @@
 <section class="tasks">
   <header>
     <h2 class="heading has-sidelines">To Do</h2>
-    <button class="filter">see my todos</button>
   </header>
   <ul>
     <% @project.tasks.each do |task| %>
@@ -26,5 +25,5 @@
       </li>
     <% end %>
   </ul>
-  <%= link_to "Add New Task", new_project_task_path(@project) %>
+  <%= link_to('Add New Task', new_project_task_path(@project), class: 'add')%>
 </section>
