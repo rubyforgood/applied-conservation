@@ -8,8 +8,9 @@ feature 'Task management' do
   let(:user_email) { 'blah@blah.com' }
   let(:project_name) { 'TEST PROJECT' }
   let(:project) { build(:project, name: project_name) }
-  let!(:task_one) { create(:task, name: task_one_name, project: project) }
   let(:user) { create(:user, email: user_email) }
+
+  let!(:task_one) { create(:task, name: task_one_name, project: project) }
   let!(:task_two) { create(:task, name: task_two_name, project: project, user: user) }
 
   scenario 'User can add a new Task' do
