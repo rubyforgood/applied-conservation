@@ -1,30 +1,30 @@
 require 'rails_helper'
 
 feature 'Target management', js: true do
-  before do
-    @project_name    = 'TEST PROJECT'
-    @target_one_name = 'TEST TARGET ONE'
-    @target_two_name = 'TEST TARGET TWO'
+  let(:project_name) { 'TEST PROJECT' }
+  let(:target_one_name) { 'TEST TARGET ONE' }
+  let(:target_two_name) { 'TEST TARGET TWO' }
+  let(:project) { Project.create(name: project_name) }
 
-    @project = Project.create(name: @project_name)
-    Target.create(name: @target_one_name, project: @project)
-    Target.create(name: @target_two_name, project: @project)
+  before do
+    Target.create(name: target_one_name, project: project)
+    Target.create(name: target_two_name, project: project)
     Target.create(name: 'NOT MY TARGET', project: Project.create)
     TargetType.create(name: 'Terrestrial Ecosystem')
   end
 
   scenario 'User can view all targets for a Project' do
-    visit "/projects/#{@project.id}"
+    visit "/projects/#{project.id}"
     click_link 'Capture Targets'
 
-    expect(page).to have_text(@project_name)
-    expect(page).to have_text(@target_one_name)
-    expect(page).to have_text(@target_two_name)
+    expect(page).to have_text(project_name)
+    expect(page).to have_text(target_one_name)
+    expect(page).to have_text(target_two_name)
     expect(page).not_to have_text('NOT MY TARGET')
   end
 
   scenario 'User can add a new Target' do
-    visit "/projects/#{@project.id}"
+    visit "/projects/#{project.id}"
     click_link 'Capture Targets'
     click_link 'Add target'
 
@@ -40,15 +40,15 @@ feature 'Target management', js: true do
     click_button('Save')
 
     expect(page).to have_text('NEW TARGET')
-    expect(current_path).to eq "/projects/#{@project.id}/targets"
+    expect(current_path).to eq "/projects/#{project.id}/targets"
   end
 
   scenario 'User can edit a Target' do
-    visit "/projects/#{@project.id}"
+    visit "/projects/#{project.id}"
     click_link 'Capture Targets'
-    click_link @target_one_name
+    click_link target_one_name
 
-    expect(page).to have_text(@target_one_name)
+    expect(page).to have_text(target_one_name)
 
     fill_in('Name', with: 'EDITED TARGET NAME')
     find('.Select-create-option-placeholder').click
@@ -57,6 +57,6 @@ feature 'Target management', js: true do
     click_button('Save')
 
     expect(page).to have_text('EDITED TARGET NAME')
-    expect(page).not_to have_text(@target_one_name)
+    expect(page).not_to have_text(target_one_name)
   end
 end
