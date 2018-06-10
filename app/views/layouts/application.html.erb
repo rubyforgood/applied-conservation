@@ -16,7 +16,9 @@
   <body>
     <% if @project %>
       <%= render layout: 'layouts/project' do %>
-        <%= yield %>
+        <section class="main-section">
+          <%= yield %>
+        </section>
       <% end %>
     <% else %>
       <%= yield %>
