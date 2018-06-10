@@ -10,16 +10,18 @@ import Button from '@material-ui/core/Button'
 const styles = {
   root: {
     flexGrow: 1,
+    marginBottom: '1em',
+    borderBottom: '3px solid #dde2a4'
   },
   flex: {
     flex: 1,
   },
   headerLink: {
     textDecoration: 'none',
-    color: '#fff'
+    color: '#33281ae0'
   },
   header: {
-    backgroundColor: '#33281ae0',
+    backgroundColor: '#fcfcf7',
   },
 }
 
