@@ -1,11 +1,7 @@
 @import "mixins";
 .project-view {
-  header {
-  }
-  main {
-    padding: 32px 16px;
-  }
   section {
+    margin-top: 1rem;
     &.next-event {
       align-items: center;
       display: flex;
@@ -16,7 +12,7 @@
       .date {
         border: 3px solid $color-mustard;
         border-radius: 8px;
-        margin-right: 12px;
+        margin-right: 1rem;
         text-align: center;
         width: 60px;
         .month {
@@ -33,6 +29,9 @@
     }
     &.files {
     }
+  }
+
+  aside {
     &.status-sidebar {
       background: $color-thyme;
       &,
@@ -67,6 +66,10 @@
         }
       }
     }
+  }
+
+  .main-section {
+    padding-left: 1rem;
   }
   @media (min-width: 680px) {
     display: flex;

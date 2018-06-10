@@ -1,11 +1,11 @@
 <div class="site-wrapper project-view">
   <main>
     <header>
-      <h1 class="heading"><%= @project.name %></h1>
+      <h1 class="heading page-heading"><%= @project.name %></h1>
     </header>
     <%= yield %>
   </main>
-  <section class="status-sidebar">
+  <aside class="status-sidebar">
     <img class="project-image" src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/39377/cacaponriver.jpg' alt=''>
     <ol class="list-reset status-key">
       <li class="completed">
@@ -18,5 +18,5 @@
       <li><a href=""><span>Develop</span> <em class="has-sidelines">Strategies</em></a></li>
       <li><a href=""><span>Complete</span> <em class="has-sidelines">Assessment</em></a></li>
     </ol>
-  </section>
+  </aside>
 </div>
