@@ -23,9 +23,8 @@ class TargetsController < ApplicationController
 
   def create
     @target = Target.create(target_params)
-
     if @target.valid?
-      redirect_to project_targets_path(@target.project)
+      redirect_to project_target_path(@target.project, @target)
     else
       redirect_to :new
     end
