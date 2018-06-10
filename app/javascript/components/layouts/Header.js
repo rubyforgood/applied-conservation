@@ -14,6 +14,10 @@ const styles = {
   flex: {
     flex: 1,
   },
+  headerLink: {
+    textDecoration: 'none',
+    color: '#fff'
+  },
   header: {
     backgroundColor: '#33281ae0',
   },
@@ -26,9 +30,11 @@ const Header = props => {
     <div className={classes.root}>
       <AppBar position='static' className={classes.header}>
         <Toolbar>
-          <Typography variant='title' color='inherit' className={classes.flex}>
-            Applied Conservation
-          </Typography>
+          <a href="/" className={classes.headerLink}>
+            <Typography variant='title' color='inherit' className={classes.flex}>
+              Applied Conservation
+            </Typography>
+          </a>
         </Toolbar>
       </AppBar>
     </div>
