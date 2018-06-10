@@ -1,3 +1,48 @@
-label, select {
+.form-section {
+  width: 60%;
+
+  *[type="submit"] {
+    border: none;
+    font-size: 1.1rem;
+    padding: 6px 12px;
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+    background-color: #66BB6A;
+    text-transform: uppercase;
+    color: #fff;
+
+    &:hover {
+      background-color: #43A047;
+    }
+  }
+
+  .form-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2rem;
+  }
+}
+
+.form-label {
 	cursor: pointer;
+  font-weight: bold;
+  display: block;
+  margin-bottom: .5rem;
+
+  &::after {
+    content: ':'
+  }
+}
+
+.form-field {
+  margin-bottom: 1rem;
+  cursor: pointer;
+  display: block;
+  min-width: 10rem;
+  height: 1.5rem;
+  background-color: white;
+}
+
+textarea.form-field {
+  width: 70%;
+  height: 3rem;
 }

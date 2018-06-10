@@ -1,24 +1,21 @@
-<h1><%= @project.name %></h1>
-
 <h2>Targets</h2>
-
-<table>
+<table class="index-table">
   <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th colspan="3"></th>
+  </tr>
   </thead>
 
   <tbody>
-    <% @targets.each do |target| %>
-      <tr>
-        <td><%= link_to "#{target.name}", edit_project_target_path(target.project.id, target.id) %></td>
-        <td><%= target.description %></td>
-      </tr>
-    <% end %>
+  <% @targets.each do |target| %>
+    <tr>
+      <th><%= link_to "#{target.name}", edit_project_target_path(target.project.id, target.id) %></th>
+      <td><%= target.description %></td>
+    </tr>
+  <% end %>
   </tbody>
 </table>
 
-<%= link_to 'Add target', new_project_target_path(@project.id) %>
+<%= link_to('Add target', new_project_target_path(@project.id), class: 'add') %>

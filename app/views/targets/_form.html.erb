@@ -1,23 +1,15 @@
 <%= form_for([@project, @target]) do |f| %>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= react_component "Autocomplete", {
+  <%= f.label :name, class: "form-label" %>
+  <%= react_component "Autocomplete", {
       suggestions: Constants::TARGET_OPTIONS,
       name: 'target[name]',
       id: 'target_name',
-      value:  @target.name,
-    } %>
-  </div>
-  <div class="field">
-    <%= f.label :target_type_id %><br />
-    <%= f.collection_select(:target_type_id, TargetType.all, :id, :name, prompt: true) %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </div>
-  <div class="actions">
-    <%= hidden_field_tag 'project_id', @project.id %>
-    <%= f.submit 'Save' %>
-  </div>
+      value: @target.name,
+  } %>
+  <%= f.label :target_type_id, class: "form-label" %>
+  <%= f.collection_select(:target_type_id, TargetType.all, :id, :name, {prompt: true}, {class: 'form-field'}) %>
+  <%= f.label :description, class: "form-label" %>
+  <%= f.text_area :description, class: 'form-field' %>
+  <%= hidden_field_tag 'project_id', @project.id %>
+  <%= f.submit 'Save', class: 'button-primary' %>
 <% end %>

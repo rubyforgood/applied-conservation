@@ -2,11 +2,18 @@
 .heading {
 	font-family: $font-display;
 	font-weight: 600;
+  margin: 0;
 
 	section & {
 		color: mix($color-slate, $color-offwhite, 95%);
 		font-weight: 500;
 	}
+}
+
+.page-heading {
+  background-color: #476144;
+  color: #fcfcf7;
+  padding: 1rem;
 }
 
 .has-sidelines {

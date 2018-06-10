@@ -9,9 +9,7 @@ class ProjectsController < ApplicationController
 
   def show; end
 
-  def new
-    @project = Project.new
-  end
+  def new; end
 
   def create
     @project = Project.new(project_params)
