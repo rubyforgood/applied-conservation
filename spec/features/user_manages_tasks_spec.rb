@@ -7,7 +7,7 @@ feature 'Task management' do
   let(:task_two_name) { 'TEST TASK 2' }
   let(:user_email) { 'blah@blah.com' }
   let(:project_name) { 'TEST PROJECT' }
-  let(:project) { Project.create(name: project_name) }
+  let(:project) { build(:project, name: project_name) }
   let!(:task_one) { Task.create(name: task_one_name, project: project) }
   let!(:task_two) { Task.create(name: task_two_name, project: project, user_id: '1') }
   let!(:user) { User.create(email: user_email, password: 'password', password_confirmation: 'password') }
