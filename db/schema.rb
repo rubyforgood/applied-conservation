@@ -69,7 +69,6 @@ ActiveRecord::Schema.define(version: 2018_06_09_201224) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "target_id"
   end
 
   create_table "targets", force: :cascade do |t|
@@ -115,6 +114,5 @@ ActiveRecord::Schema.define(version: 2018_06_09_201224) do
   add_foreign_key "grades", "grade_templates"
   add_foreign_key "grades", "projects"
   add_foreign_key "health_attributes", "target_types"
-  add_foreign_key "target_types", "targets"
   add_foreign_key "targets", "projects"
 end
