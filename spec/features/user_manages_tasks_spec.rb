@@ -63,7 +63,7 @@ feature 'Task management' do
     expect(page).to have_text("#{@task_three.name} #{@user.email} Done")
   end  
   
-  scenario "User can mark done owned #{task_three_name}" do
+  scenario "User can mark archived owned #{task_three_name}" do
     visit "/projects/#{@project.id}"
 
     click_on("archive-task-#{@task_three.id}")

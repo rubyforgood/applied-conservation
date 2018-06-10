@@ -17,6 +17,7 @@
       <li>
         <%= task.name %>
         <%= task.user&.email %>
+        <%= task.status %>
         <%= task.due_on %>
         <%= task.description %>
         <% if current_user && task.user_id.nil? %>
