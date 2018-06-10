@@ -11,9 +11,9 @@ feature 'Project management' do
 
     visit project_path(project)
     expect(page).to have_content "Add New Task"
-  end  
+  end
 
-  scenario 'User can add a new Target' do
+  scenario 'User can add a new Project' do
     visit root_path
     click_link 'New Project'
 

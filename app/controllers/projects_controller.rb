@@ -13,9 +13,7 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def new
-    @project = Project.new
-  end
+  def new; end
 
   def create
     @project = Project.new(project_params)
