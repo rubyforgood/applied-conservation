@@ -40,7 +40,6 @@ feature 'Target management', js: true do
     click_button('Save')
 
     expect(page).to have_text('NEW TARGET')
-    expect(current_path).to eq "/projects/#{project.id}/targets"
   end
 
   scenario 'User can edit a Target' do

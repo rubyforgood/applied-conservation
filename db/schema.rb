@@ -10,24 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_10_150004) do
+ActiveRecord::Schema.define(version: 2018_06_10_160412) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "grade_templates", force: :cascade do |t|
-    t.string "name"
-    t.integer "score"
-    t.integer "weight"
-  end
-
-  create_table "grades", force: :cascade do |t|
-    t.string "description"
-    t.bigint "grade_template_id"
-    t.bigint "project_id"
-    t.index ["grade_template_id"], name: "index_grades_on_grade_template_id"
-    t.index ["project_id"], name: "index_grades_on_project_id"
-  end
 
   create_table "health_attributes", force: :cascade do |t|
     t.string "title"
@@ -62,6 +48,28 @@ ActiveRecord::Schema.define(version: 2018_06_10_150004) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "rating_templates", force: :cascade do |t|
+    t.string "name"
+    t.integer "score"
+    t.integer "weight"
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.string "description"
+    t.bigint "rating_template_id"
+    t.bigint "project_id"
+    t.index ["project_id"], name: "index_ratings_on_project_id"
+    t.index ["rating_template_id"], name: "index_ratings_on_rating_template_id"
+  end
+
+  create_table "target_health_attribute_ratings", force: :cascade do |t|
+    t.string "rating"
+    t.bigint "target_id"
+    t.bigint "health_attribute_id"
+    t.index ["health_attribute_id"], name: "index_target_health_attribute_ratings_on_health_attribute_id"
+    t.index ["target_id"], name: "index_target_health_attribute_ratings_on_target_id"
   end
 
   create_table "target_types", force: :cascade do |t|
@@ -111,8 +119,10 @@ ActiveRecord::Schema.define(version: 2018_06_10_150004) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "grades", "grade_templates"
-  add_foreign_key "grades", "projects"
   add_foreign_key "health_attributes", "target_types"
+  add_foreign_key "ratings", "projects"
+  add_foreign_key "ratings", "rating_templates"
+  add_foreign_key "target_health_attribute_ratings", "health_attributes"
+  add_foreign_key "target_health_attribute_ratings", "targets"
   add_foreign_key "targets", "projects"
 end

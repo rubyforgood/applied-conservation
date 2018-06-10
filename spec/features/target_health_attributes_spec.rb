@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-feature 'Target Health Attributes' do
+feature 'Target Health Attributes', js: true do
   let!(:project) {  Project.create(name: 'Saving Bobs Lake from oil pollution', description: 'its a lake') }
   let(:target_type) { TargetType.create(name: 'Lake') }
-  let(:target) { Target.create(name: 'Bobs Lake', project: project, target_type: target_type) }
+  # let(:target) { Target.create(name: 'Bobs Lake', project: project, target_type: target_type) }
 
   before do
     HealthAttribute.create(title: 'Flows', target_type: target_type)
@@ -13,16 +13,28 @@ feature 'Target Health Attributes' do
     HealthAttribute.create(title: 'Water Quality', target_type: target_type)
   end
 
-  scenario 'User can view target health attributes' do
-    visit project_target_path(project, target)
+  describe 'Creating a Target' do
 
-    expect(page).to have_content('Health Attributes')
+    it "shows it's health attributes" do
+      visit "/projects/#{project.id}/targets/new"
 
-    # expect to see 5 health attributes
-    expect(page).to have_content('Flows')
-    expect(page).to have_content('Riparian Vegetation')
-    expect(page).to have_content('Native Aquatic Animals')
-    expect(page).to have_content('Physical Integrity')
-    expect(page).to have_content('Water Quality')
+      fill_in('Name', with: 'Bobs Lake')
+      find('.Select-create-option-placeholder').click
+      select('Lake', from: 'target[target_type_id]')
+
+      click_button('Save')
+
+      expect(page).to have_content("Bobs Lake")
+      expect(page).to have_content('Health Attributes')
+
+      # expect to see 5 health attributes
+      expect(page).to have_content('Flows')
+      expect(page).to have_content('Riparian Vegetation')
+      expect(page).to have_content('Native Aquatic Animals')
+      expect(page).to have_content('Physical Integrity')
+      expect(page).to have_content('Water Quality')
+    end
   end
+
+
 end
