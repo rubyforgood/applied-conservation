@@ -10,6 +10,7 @@ class TasksController < ApplicationController
 
   def create
     @task = @project.tasks.new(task_params)
+    @task.status = 'New'
     if @task.save
       redirect_to @task.project
     else
@@ -32,7 +33,25 @@ class TasksController < ApplicationController
 
   def pickup
     @task = Task.find(params[:task_id])
-    if @task.update(user: current_user)
+    if @task.update(user: current_user, status: 'In Progress')
+      redirect_to @task.project
+    else
+      render 'edit'
+    end
+  end
+
+  def done
+    @task = Task.find(params[:task_id])
+    if @task.update(status: 'Done')
+      redirect_to @task.project
+    else
+      render 'edit'
+    end
+  end
+
+  def archive
+    @task = Task.find(params[:task_id])
+    if @task.update(status: 'Archived')
       redirect_to @task.project
     else
       render 'edit'

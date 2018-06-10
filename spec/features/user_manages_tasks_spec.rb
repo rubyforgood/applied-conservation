@@ -5,6 +5,7 @@ feature 'Task management' do
   Warden.test_mode!
   let(:task_one_name) { 'TEST TASK 1' }
   let(:task_two_name) { 'TEST TASK 2' }
+  let(:task_three_name) { 'TEST TASK 3' }
   let(:user_email) { 'blah@blah.com' }
   let(:project_name) { 'TEST PROJECT' }
   let(:project) { build(:project, name: project_name) }
@@ -12,9 +13,15 @@ feature 'Task management' do
 
   let!(:task_one) { create(:task, name: task_one_name, project: project) }
   let!(:task_two) { create(:task, name: task_two_name, project: project, user: user) }
+  let!(:task_three) { create(:task, name: task_three_name, project: project, user: user, status: 'In Progress') }
+
+  before do
+    login_as(user, scope: :user)
+  end
 
   scenario 'User can add a new Task' do
     visit "/projects/#{project.id}"
+
     click_link 'Add New Task'
 
     fill_in('Name', with: 'NEW TASK')
@@ -36,7 +43,6 @@ feature 'Task management' do
   end
 
   scenario "User can view a button for task 1 but not task 2" do
-    login_as(user, scope: :user)
     visit "/projects/#{project.id}"
 
     expect(page).to have_selector("#pickup-task-#{task_one.id}")
@@ -44,11 +50,26 @@ feature 'Task management' do
   end
 
   scenario "User can pickup task 1" do
-    login_as(user, scope: :user)
     visit "/projects/#{project.id}"
 
     click_on("pickup-task-#{task_one.id}")
     expect(page).not_to have_selector("#pickup-task-#{task_one.id}")
     expect(page).to have_text("#{task_one_name} #{user_email}")
+  end
+
+  scenario "User can mark done owned Task 3" do
+    visit "/projects/#{project.id}"
+
+    click_on("done-task-#{task_three.id}")
+    expect(page).not_to have_selector("#done-task-#{task_three.id}")
+    expect(page).to have_text("#{task_three.name} #{user.email} Done")
+  end
+
+  scenario "User can mark archived owned Task 3" do
+    visit "/projects/#{project.id}"
+
+    click_on("archive-task-#{task_three.id}")
+    expect(page).not_to have_selector("#archive-task-#{task_three.id}")
+    expect(page).not_to have_text("#{task_three.name}")
   end
 end

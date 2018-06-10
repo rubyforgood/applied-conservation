@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :targets
     resources :tasks do
       put :pickup
+      put :done, :archive
     end
   end
 
