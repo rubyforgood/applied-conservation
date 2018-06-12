@@ -2,6 +2,8 @@ Constants::TARGET_TYPES.each do |name|
   TargetType.find_or_create_by!(name: name)
 end
 
+require_relative 'seeds/health_attribute_seeds'
+
 project1 = Project.find_or_create_by!(
   name: "Bob's Project",
   description: "This project is about Bob's Lake and surrounding ecology",
