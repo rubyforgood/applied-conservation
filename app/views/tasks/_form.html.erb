@@ -1,5 +1,5 @@
-<h2 class="heading"><%= heading %></h2>
 <section class="form-section">
+  <h2 class="heading"><%= heading %></h2>
   <%= form_for [@project, @task] do |f| %>
     <%= f.label :name, class: "form-label" %>
     <%= f.text_field :name, class: 'form-field' %>

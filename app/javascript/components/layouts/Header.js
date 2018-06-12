@@ -21,7 +21,7 @@ const styles = {
     color: '#33281ae0'
   },
   header: {
-    backgroundColor: '#fcfcf7',
+    backgroundColor: '#1e371d',
   },
 }
 
@@ -32,9 +32,9 @@ const Header = props => {
     <div className={classes.root}>
       <AppBar position='static' className={classes.header}>
         <Toolbar>
-          <a href="/" className={classes.headerLink}>
-            <Typography variant='title' color='inherit' className={classes.flex}>
-              Applied Conservation
+          <a href="/" className={`${classes.headerLink} header-link`}>
+            <Typography variant='title' className={classes.flex}>
+              turboCAP
             </Typography>
           </a>
         </Toolbar>

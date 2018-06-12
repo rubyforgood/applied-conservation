@@ -1,11 +1,12 @@
-<h2 class="heading"><%= heading %></h2>
 <section class="form-section">
+  <h2 class="heading"><%= heading %></h2>
   <%= form_for([@project, @target]) do |f| %>
     <%= f.label :name, class: "form-label" %>
     <%= react_component "Autocomplete", {
         suggestions: Constants::TARGET_OPTIONS,
         name: 'target[name]',
         id: 'target_name',
+        className: 'form-field',
         value: @target.name,
     } %>
     <%= f.label :target_type_id, class: "form-label" %>

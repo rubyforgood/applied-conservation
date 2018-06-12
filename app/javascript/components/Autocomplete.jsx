@@ -24,11 +24,12 @@ export default class Autocomplete extends React.Component {
 
   render() {
     const { selectedOption } = this.state
-    const { suggestions, name, id }= this.props
+    const { suggestions, name, id, className }= this.props
     return (
       <Creatable
         id={id}
         name={name}
+        className={className}
         value={selectedOption}
         onChange={this.handleChange}
         options={this.convertSuggestions()}
