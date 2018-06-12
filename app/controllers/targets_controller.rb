@@ -1,31 +1,29 @@
-# frozen_string_literal: true
-
 class TargetsController < ApplicationController
+  before_action :load_project
+
   def index
-    @project = Project.find(params[:project_id])
     @targets = @project.targets
   end
 
   def new
-    @project = Project.find(params[:project_id])
     @target = Target.new
   end
 
   def edit
-    @project = Project.find(params[:project_id])
     @target = Target.find(params[:id])
   end
 
   def show
     @target = Target.find(params[:id])
-    @health_attributes = HealthAttribute.where(target_type: @target.target_type)
+    @health_attributes = @target.target_health_attribute_ratings
+                                .map(&:health_attribute)
   end
 
   def create
-    @target = Target.create(target_params)
-
-    if @target.valid?
-      redirect_to project_targets_path(@target.project)
+    new_target = Target.new(target_params)
+    @target = TargetService.new(new_target).create
+    if @target
+      redirect_to project_target_path(@target.project, @target)
     else
       redirect_to :new
     end
@@ -42,6 +40,10 @@ class TargetsController < ApplicationController
   end
 
   private
+
+  def load_project
+    @project = Project.find(params[:project_id])
+  end
 
   def target_params
     params.require(:target)

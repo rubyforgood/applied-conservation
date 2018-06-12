@@ -1,10 +1,9 @@
-<h2><%= @target.name %></h2>
-<ul>
-    <li><h2><%= @target.name %></h2></li>
-</ul>
-<h2>Health Attributes</h2>
-<div>
-  <%= @health_attributes.each do |h| %>
-    <%= h.title %>
-  <% end %>
-</div>
+<h2 class="heading page-sub-heading"><%= @target.name %></h2>
+<section class="health-attributes">
+  <h3>Health Attributes</h3>
+  <ul>
+    <% @health_attributes.each do |h| %>
+      <li><%= h.title %></li>
+    <% end %>
+  </ul>
+</section>
