@@ -42,14 +42,14 @@ feature 'Task management' do
     expect(page).to have_text(task_two_name)
   end
 
-  scenario "User can view a button for task 1 but not task 2" do
+  scenario 'User can view a button for task 1 but not task 2' do
     visit "/projects/#{project.id}"
 
     expect(page).to have_selector("#pickup-task-#{task_one.id}")
     expect(page).not_to have_selector("#pickup-task-#{task_two.id}")
   end
 
-  scenario "User can pickup task 1" do
+  scenario 'User can pickup task 1' do
     visit "/projects/#{project.id}"
 
     click_on("pickup-task-#{task_one.id}")
@@ -57,7 +57,7 @@ feature 'Task management' do
     expect(page).to have_text("#{task_one_name} #{user_email}")
   end
 
-  scenario "User can mark done owned Task 3" do
+  scenario 'User can mark done owned Task 3' do
     visit "/projects/#{project.id}"
 
     click_on("done-task-#{task_three.id}")
@@ -65,11 +65,11 @@ feature 'Task management' do
     expect(page).to have_text("#{task_three.name} #{user.email} Done")
   end
 
-  scenario "User can mark archived owned Task 3" do
+  scenario 'User can mark archived owned Task 3' do
     visit "/projects/#{project.id}"
 
     click_on("archive-task-#{task_three.id}")
     expect(page).not_to have_selector("#archive-task-#{task_three.id}")
-    expect(page).not_to have_text("#{task_three.name}")
+    expect(page).not_to have_text(task_three.name.to_s)
   end
 end

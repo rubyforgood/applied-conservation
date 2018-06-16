@@ -35,7 +35,7 @@ describe TargetService do
     end
 
     describe 'target_params are not valid' do
-      let(:target_service) { TargetService.new(FactoryBot.build(:target, project: nil))}
+      let(:target_service) { TargetService.new(FactoryBot.build(:target, project: nil)) }
 
       it 'does not create a new target' do
         expect { target_service.create }.to_not change(Target, :count)

@@ -16,7 +16,7 @@
   <body>
     <%= react_component 'layouts/Header' %>
     <%= render partial: 'layouts/flash_messages' %>
-    <% if @project %>
+    <% if @project&.valid? %>
       <%= render layout: 'layouts/project' do %>
         <section class="main-section">
           <%= yield %>
