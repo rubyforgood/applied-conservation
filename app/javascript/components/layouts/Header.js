@@ -10,12 +10,18 @@ import Button from '@material-ui/core/Button'
 const styles = {
   root: {
     flexGrow: 1,
+    marginBottom: '1em',
+    borderBottom: '3px solid #dde2a4'
   },
   flex: {
     flex: 1,
   },
+  headerLink: {
+    textDecoration: 'none',
+    color: '#33281ae0'
+  },
   header: {
-    backgroundColor: '#33281ae0',
+    backgroundColor: '#fcfcf7',
   },
 }
 
@@ -26,9 +32,11 @@ const Header = props => {
     <div className={classes.root}>
       <AppBar position='static' className={classes.header}>
         <Toolbar>
-          <Typography variant='title' color='inherit' className={classes.flex}>
-            Applied Conservation
-          </Typography>
+          <a href="/" className={classes.headerLink}>
+            <Typography variant='title' color='inherit' className={classes.flex}>
+              Applied Conservation
+            </Typography>
+          </a>
         </Toolbar>
       </AppBar>
     </div>

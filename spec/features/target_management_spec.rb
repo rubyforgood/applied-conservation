@@ -45,7 +45,7 @@ feature 'Target management', js: true do
     click_link 'Capture Targets'
     click_link target.name
 
-    expect(page).to have_content 'Editing Target'
+    expect(page).to have_content "Edit #{target.name}"
 
     fill_in_autosuggest('Name', with: 'EDITED TARGET NAME')
     select('Terrestrial Ecosystem', from: 'target[target_type_id]')

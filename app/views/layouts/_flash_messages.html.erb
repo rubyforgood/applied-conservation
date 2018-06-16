@@ -1,0 +1,21 @@
+<% if flash.present? %>
+  <div class="flash">
+    <% flash.each do |key, msg| %>
+      <% if msg %>
+        <div class="alert-<%= key %> alert">
+          <% if msg.kind_of? Array %>
+            <ul>
+              <% msg.each do |m| %>
+                <li>
+                  <%= m %>
+                </li>
+              <% end %>
+            </ul>
+          <% else %>
+            <%= msg %>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

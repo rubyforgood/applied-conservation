@@ -11,7 +11,6 @@ AllCops:
     - 'lib/**/*'
     - 'log/**/*'
     - 'script/**/*'
-    - 'spec/**/*'
     - 'tmp/**/*'
     - 'vendor/**/*'
 
@@ -24,3 +23,10 @@ Style/DocumentationMethod:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
+Metrics/LineLength:
+  Exclude:
+    - 'spec/**/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'

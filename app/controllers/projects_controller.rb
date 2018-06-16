@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show]
+  before_action :set_project, only: %i[show edit update]
 
   def index
     @projects = Project.all
@@ -13,15 +13,29 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def new; end
+  def new
+    @project = Project.new
+  end
 
   def create
     @project = Project.new(project_params)
 
     if @project.save
-      redirect_to @project, notice: 'project was successfully created.'
+      redirect_to @project, notice: 'Project successfully created.'
     else
-      render :new
+      flash.now[:error] = @project.errors.full_messages
+      render :new, status: 422
+    end
+  end
+
+  def edit; end
+
+  def update
+    if @project.update_attributes(project_params)
+      redirect_to @project, notice: 'Project successfully updated.'
+    else
+      flash.now[:error] = @project.errors.full_messages
+      render :edit, status: 422
     end
   end
 

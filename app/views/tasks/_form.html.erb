@@ -1,0 +1,18 @@
+<h2 class="heading"><%= heading %></h2>
+<section class="form-section">
+  <%= form_for [@project, @task] do |f| %>
+    <%= f.label :name, class: "form-label" %>
+    <%= f.text_field :name, class: 'form-field' %>
+    <%= f.label :due_on, class: "form-label" %>
+    <%= f.date_field :due_on, class: 'form-field' %>
+    <%= f.label :user, class: "form-label" %>
+    <%= f.collection_select :user_id, User.all, :id, :email, {include_blank: ""}, {class: 'form-field'} %>
+    <%= f.label :description, class: "form-label" %>
+    <%= f.text_area :description, class: 'form-field' %>
+
+    <div class="form-footer">
+      <%= link_to 'Back', @project %>
+      <%= f.submit "Add Task", class: 'button-primary' %>
+    </div>
+  <% end %>
+</section>
