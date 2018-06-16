@@ -8,10 +8,10 @@ describe 'Project Requests', type: :request do
 
   describe 'GET index' do
     it 'returns Projects index page with created project' do
-      get "/projects"
+      get '/projects'
 
       expect(response).to have_http_status 200
-      expect(response.body).to include("Projects")
+      expect(response.body).to include('Projects')
       expect(response.body).to include(project.name)
     end
   end
@@ -33,7 +33,7 @@ describe 'Project Requests', type: :request do
   describe 'POST create' do
     describe 'success' do
       it 'creates project and redirects to project show' do
-        post '/projects', {params: {project: attributes_for(:project)}}
+        post '/projects', params: { project: attributes_for(:project) }
 
         expect(response).to have_http_status :found
         expect(response).to redirect_to(project_path(Project.last))
@@ -42,7 +42,7 @@ describe 'Project Requests', type: :request do
 
     describe 'failure' do
       it 'shows errors' do
-        post '/projects', {params: {project: attributes_for(:project, name: '')}}
+        post '/projects', params: { project: attributes_for(:project, name: '') }
 
         expect(response).to have_http_status 422
         expect(response.body).to include('Name can&#39;t be blank')
@@ -53,7 +53,7 @@ describe 'Project Requests', type: :request do
   describe 'PUT update' do
     describe 'success' do
       it 'updates the project' do
-        put "/projects/#{project.id}", {params: {project: {name: 'Bender saves the ocean'}}}
+        put "/projects/#{project.id}", params: { project: { name: 'Bender saves the ocean' } }
         follow_redirect!
 
         expect(response.body).to include('Bender saves the ocean')
@@ -62,7 +62,7 @@ describe 'Project Requests', type: :request do
 
     describe 'failure' do
       it 'shows errors' do
-        put "/projects/#{project.id}", {params: {project: {name: ''}}}
+        put "/projects/#{project.id}", params: { project: { name: '' } }
 
         expect(response).to have_http_status 422
         expect(response.body).to include('Name can&#39;t be blank')

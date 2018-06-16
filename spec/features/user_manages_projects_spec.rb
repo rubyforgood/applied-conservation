@@ -19,7 +19,7 @@ feature 'Project management' do
 
     fill_in('Name', with: 'NEW PROJECT')
     fill_in('Description', with: 'NEW PROJECT DESCRIPTION')
-    click_button('Create Project')
+    click_button('Save')
 
     expect(page).to have_text('NEW PROJECT')
   end
