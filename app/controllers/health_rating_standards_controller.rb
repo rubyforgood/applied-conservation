@@ -13,8 +13,7 @@ class HealthRatingStandardsController < ApplicationController
       rating = attributes['rating_name']
       HealthRatingStandard.create!(target_type: target_type,
                                    rating: rating,
-                                   description: attributes['description'],
-      )
+                                   description: attributes['description'])
     end
 
     redirect_to import_health_rating_standards_path
