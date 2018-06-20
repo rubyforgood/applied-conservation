@@ -1,0 +1,4 @@
+target_type_name,health_attribute_name,rating_name,description,comments
+river,flow,poor,there are blockages,i googled it
+spring,flow,poor,there are rocks in the way,
+spring,flow,good,spring flows well with enough rainfall,

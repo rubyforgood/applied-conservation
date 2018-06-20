@@ -2,4 +2,6 @@
 
 class HealthRatingStandard < ApplicationRecord
   belongs_to :target_type
+
+
 end
