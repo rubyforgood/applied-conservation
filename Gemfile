@@ -12,6 +12,7 @@ gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.0'
 gem 'react-rails'
 gem 'sass-rails'
+gem 'skylight'
 gem 'webpacker'
 
 group :development, :test do
