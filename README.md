@@ -1,3 +1,5 @@
+[![View performance data on Skylight](https://badges.skylight.io/status/YXisuAn0Mhjx.svg?token=eiduhCn1sTWYwLsdC-8NcDtsPjdzfm3ISdDY64SBkps)](https://www.skylight.io/app/applications/YXisuAn0Mhjx)
+
 # Applied Conservation
 
 An application to help organize and plan reservation projects.
