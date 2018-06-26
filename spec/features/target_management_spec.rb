@@ -35,7 +35,9 @@ feature 'Target management', js: true do
     target = Target.last
     expect(current_path).to eq project_target_path(project, target)
     expect(page.find('.page-sub-heading')).to have_text('NEW TARGET')
+
     expect(page.find('section.health-attributes')).to have_text('Ground Quality')
+    page.find()
   end
 
   it 'User can edit a Target' do

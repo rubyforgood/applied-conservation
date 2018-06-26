@@ -9,5 +9,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :target_health_attribute_ratings, only: [:update]
+
   devise_for :users
 end

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'Target Requests', type: :request do
-  let!(:project) { FactoryBot.create(:project) }
+  let!(:project) { create(:project) }
 
   describe '#POST create' do
     it 'returns an 302 (FOUND) status and redirects to the target show' do

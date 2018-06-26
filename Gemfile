@@ -5,9 +5,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
+gem 'best_in_place', '~> 3.0.1'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 gem 'pg', '>= 0.18', '< 2.0'
+gem 'jquery-rails'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.0'
 gem 'react-rails'

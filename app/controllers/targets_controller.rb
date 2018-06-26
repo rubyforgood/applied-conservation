@@ -15,8 +15,6 @@ class TargetsController < ApplicationController
 
   def show
     @target = Target.find(params[:id])
-    @health_attributes = @target.target_health_attribute_ratings
-                                .map(&:health_attribute)
   end
 
   def create
