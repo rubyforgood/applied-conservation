@@ -1,5 +1,6 @@
 class TargetsController < ApplicationController
-  before_action :load_project
+  before_action :load_target, only: %i[edit show update]
+  before_action :load_project, only: %i[index create new]
 
   def index
     @targets = @project.targets
@@ -10,26 +11,22 @@ class TargetsController < ApplicationController
   end
 
   def edit
-    @target = Target.find(params[:id])
+    @project = @target.project
   end
 
-  def show
-    @target = Target.find(params[:id])
-  end
+  def show; end
 
   def create
-    new_target = Target.new(target_params)
+    new_target = Target.new(target_params.merge(project_id: params[:project_id]))
     @target = TargetService.new(new_target).create
     if @target
-      redirect_to project_target_path(@target.project, @target)
+      redirect_to target_path(@target)
     else
       redirect_to :new
     end
   end
 
   def update
-    @target = Target.find(params[:id])
-
     if @target.update(target_params)
       redirect_to project_targets_url(@target.project)
     else
@@ -39,13 +36,16 @@ class TargetsController < ApplicationController
 
   private
 
+  def load_target
+    @target = Target.find params[:id]
+  end
+
   def load_project
-    @project = Project.find(params[:project_id])
+    @project = Project.find params[:project_id]
   end
 
   def target_params
     params.require(:target)
           .permit(:name, :description, :target_type_id)
-          .merge(project_id: params[:project_id])
   end
 end

@@ -3,9 +3,8 @@ class TargetHealthAttributeRatingsController < ApplicationController
     @target_health_attribute_rating = TargetHealthAttributeRating.find(params[:id])
     @target_health_attribute_rating.update(target_health_attribute_rating_params)
 
-    target = @target_health_attribute_rating.target
     respond_to do |format|
-      format.html { redirect_to project_target_url(target.project, target) }
+      format.html { redirect_to target_url(@target_health_attribute_rating.target) }
       format.json { respond_with_bip(@target_health_attribute_rating) }
     end
   end

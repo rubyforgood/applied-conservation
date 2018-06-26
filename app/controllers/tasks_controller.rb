@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class TasksController < ApplicationController
-  before_action :find_project, only: %i[new create]
+  before_action :load_task, only: %i[edit show update]
+  before_action :load_project, only: %i[index create new]
 
   def new
     @task = @project.tasks.new
@@ -65,7 +66,11 @@ class TasksController < ApplicationController
                                  :due_on, :project_id, :user_id)
   end
 
-  def find_project
-    @project = Project.find(params[:project_id])
+  def load_task
+    @task = Task.find params[:id]
+  end
+
+  def load_project
+    @project = Project.find params[:project_id]
   end
 end

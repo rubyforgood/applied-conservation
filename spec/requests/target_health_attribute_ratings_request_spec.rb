@@ -20,7 +20,7 @@ describe 'Target Health Attribute Rating Requests', type: :request do
 
     it 'redirects to the target show path' do
       target = target_health_attribute_rating.target
-      expect(response).to redirect_to project_target_path(target.project, target)
+      expect(response).to redirect_to target_path(target)
     end
   end
 end

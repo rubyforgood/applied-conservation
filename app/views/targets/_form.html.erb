@@ -1,6 +1,6 @@
 <section class="form-section">
   <h2 class="heading"><%= heading %></h2>
-  <%= form_for([@project, @target]) do |f| %>
+  <%= form_for(@target) do |f| %>
     <%= f.label :name, class: "form-label" %>
     <%= react_component "Autocomplete", {
         suggestions: Constants::TARGET_OPTIONS,
