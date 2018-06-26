@@ -17,7 +17,9 @@ class TargetsController < ApplicationController
   def show; end
 
   def create
-    new_target = Target.new(target_params.merge(project_id: params[:project_id]))
+    new_target = Target.new(
+      target_params.merge(project_id: params[:project_id])
+    )
     @target = TargetService.new(new_target).create
     if @target
       redirect_to target_path(@target)

@@ -23,6 +23,9 @@ Style/DocumentationMethod:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
+Metrics/MethodLength:
+  Enabled: false
+
 Metrics/LineLength:
   Exclude:
     - 'spec/**/*'

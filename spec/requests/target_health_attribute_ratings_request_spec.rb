@@ -8,7 +8,7 @@ describe 'Target Health Attribute Rating Requests', type: :request do
       put "/target_health_attribute_ratings/#{target_health_attribute_rating.id}",
           params: {
             target_health_attribute_rating: {
-              rating: "good"
+              rating: 'good'
             }
           }
     end
