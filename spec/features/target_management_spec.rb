@@ -41,9 +41,8 @@ feature 'Target management', js: true do
   it 'User can edit a Target' do
     target = FactoryBot.create(:target, project: project)
 
-    visit "/projects/#{project.id}"
-    click_link 'Capture Targets'
-    click_link target.name
+    visit "/projects/#{project.id}/targets/#{target.id}"
+    click_link 'Edit'
 
     expect(page).to have_content "Edit #{target.name}"
 

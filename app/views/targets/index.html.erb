@@ -10,14 +10,14 @@
   <tbody>
   <% @targets.each do |target| %>
     <tr>
-      <th><%= link_to "#{target.name}", edit_project_target_path(target.project.id, target.id) %></th>
+      <th><%= link_to "#{target.name}", project_target_path(target.project.id, target.id) %></th>
       <td><%= target.description %></td>
     </tr>
   <% end %>
   </tbody>
 </table>
 
-<%= link_to(new_project_target_path(@project.id), class: 'add') do %>
+<%= link_to(new_project_target_path(@project.id), class: 'navigation') do %>
   <%= fa_icon 'plus' %>
   Add New Target
 <% end %>

@@ -15,12 +15,13 @@
       background-color: darken($color-primary-action, 10%);
     }
   }
+}
 
-  .form-footer {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 2rem;
-  }
+.form-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 2rem;
 }
 
 .form-label {
@@ -41,11 +42,11 @@
   width: 70%;
   height: 2.5rem;
   background-color: white;
-  border-color: rgb(166, 166, 166);
+  border: 1px solid rgb(166, 166, 166);
 }
 
-.Select-control {
-  border-color: rgb(166, 166, 166);
+.Select .Select-control {
+  border: none;
 }
 
 textarea.form-field {
