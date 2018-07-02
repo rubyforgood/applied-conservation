@@ -14,4 +14,6 @@
 
 .has-sidelines {
 	@include side-lined;
+  align-self: center;
+  width: 100%;
 }

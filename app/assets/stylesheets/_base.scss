@@ -30,3 +30,11 @@ img {
 	// ⚠️ Using this class will hide content from the viewport AND from screenreaders; use sparingly and with thoughtful intention
 	display: none;
 }
+
+.page-section {
+  width: 90%;
+  padding: 1rem $page-side-margin;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}

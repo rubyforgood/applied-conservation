@@ -1,4 +1,4 @@
-<section class="next-event">
+<section class="next-event page-section">
   <div class="date">
     <div class="month">Aug</div>
     18
@@ -8,31 +8,6 @@
     <p>Teleconference at 3pm CST <a href="">[more info]</a></p>
   </div>
 </section>
-<section class="tasks">
-  <header>
-    <h2 class="heading has-sidelines">To Do</h2>
-  </header>
-  <ul>
-    <% @tasks.each do |task| %>
-      <li>
-        <%= task.name %>
-        <%= task.user&.email %>
-        <%= task.status %>
-        <%= task.due_on %>
-        <%= task.description %>
-        <% if current_user && task.user_id.nil? %>
-          <%= button_to 'Pick-Up Task', task_pickup_path(task), id: "pickup-task-#{task.id}", method: :put %>
-          <%= button_to 'X', task_archive_path(task), id: "archive-task-#{task.id}", method: :put %>
-        <% end %>
-        <% if current_user && task.user_id == current_user.id && task.status == 'In Progress' %>
-          <%= button_to 'Done', task_done_path(task), id: "done-task-#{task.id}", method: :put %>
-          <%= button_to 'X', task_archive_path(task), id: "archive-task-#{task.id}", method: :put %>
-        <% end %>
-      </li>
-    <% end %>
-  </ul>
-  <%= link_to(new_project_task_path(@project), class: 'navigation') do %>
-    <%= fa_icon 'plus' %>
-    Add New Task
-  <% end %>
+<section class="page-section" >
+  <%= render partial: 'tasks/index' %>
 </section>
