@@ -1,6 +1,6 @@
 class TargetsController < ApplicationController
   before_action :load_target, only: %i[edit show update]
-  before_action :load_project, only: %i[index create new]
+  before_action :load_project, only: %i[index create new edit_all update_all]
 
   def index
     @targets = @project.targets
@@ -34,6 +34,20 @@ class TargetsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def edit_all
+    @targets = @project.targets
+  end
+
+  def update_all
+    @targets = @project.targets.index_by(&:id)
+
+    params[:targets].each do |id, target_params|
+      @targets[id.to_i].update! target_params.permit!
+    end
+
+    redirect_to [@project, :targets]
   end
 
   private
