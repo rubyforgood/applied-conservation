@@ -13,7 +13,7 @@
     <tr>
       <th><%= link_to "#{target.name}", target_path(target) %></th>
       <td><%= target.description %></td>
-      <td><%= target.target_type.name %></td>
+      <td><%= target.target_type&.name %></td>
     </tr>
   <% end %>
   </tbody>
