@@ -14,7 +14,9 @@ class TargetsController < ApplicationController
     @project = @target.project
   end
 
-  def show; end
+  def show
+    @project = @target.project
+  end
 
   def create
     new_target = Target.new(

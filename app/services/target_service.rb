@@ -15,7 +15,7 @@ class TargetService
   def generate_target_health_attribute_ratings
     health_attributes = @target.target_type.health_attributes
     health_attributes.each do |attr|
-      @target.target_health_attribute_ratings.create!(health_attribute: attr)
+      @target.target_health_attribute_ratings.create!(name: attr.title)
     end
   end
 end

@@ -33,7 +33,7 @@ feature 'Target management', js: true do
 
     target = Target.last
     expect(current_path).to eq target_path(target)
-    expect(page.find('.page-sub-heading')).to have_text('NEW TARGET')
+    expect(page.find('.page-heading')).to have_text('NEW TARGET')
 
     expect(page.find('section.health-attributes')).to have_text('Ground Quality')
   end
@@ -53,5 +53,17 @@ feature 'Target management', js: true do
 
     expect(page).to have_text('EDITED TARGET NAME')
     expect(page).not_to have_text(target_one_name)
+  end
+
+  describe 'Editing target health attributes' do
+    let(:target_health_attribute_rating) { FactoryBot.create(:target_health_attribute_rating) }
+    let!(:target) { target_health_attribute_rating.target }
+
+    it 'User can edit target health attribute from edit form' do
+      visit "/targets/#{target.id}"
+      click_link target_health_attribute_rating.name
+
+      expect(page.find('.page-heading')).to have_content target_health_attribute_rating.name
+    end
   end
 end

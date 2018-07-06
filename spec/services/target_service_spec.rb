@@ -23,7 +23,7 @@ describe TargetService do
 
         target.reload
         health_attribute_target_rating = target.target_health_attribute_ratings.last
-        expect(health_attribute_target_rating.health_attribute).to eq health_attribute
+        expect(health_attribute_target_rating.name).to eq health_attribute.title
       end
 
       it 'does not generate any target_health_attribute_ratings when target has no target_type' do

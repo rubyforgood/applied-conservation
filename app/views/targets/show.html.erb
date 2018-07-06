@@ -1,5 +1,5 @@
 <section class="page-section">
-  <h2 class="heading page-sub-heading"><%= @target.name %></h2>
+  <h2 class="heading page-heading"><%= @target.name %></h2>
   <%= link_to('Edit', edit_target_path(@target), class: 'navigation') %>
   <section class="health-attributes">
     <h3>Health Attributes</h3>
@@ -13,7 +13,7 @@
       <tbody>
         <% @target.target_health_attribute_ratings.each do |health_attr_rating| %>
           <tr>
-            <th><%= health_attr_rating.health_attribute.title %></th>
+            <th><%= link_to health_attr_rating.name, target_health_attribute_rating_path(health_attr_rating) %></th>
             <th>
               <%= best_in_place health_attr_rating, :rating, as: :select,
                                 place_holder: "click me to edit",
@@ -26,7 +26,7 @@
       </tbody>
     </table>
     <div class="form-footer">
-      <%= link_to('Back', project_targets_path(@target.project), class: 'navigation')%>
+      <%= link_to('Back to Targets', project_targets_path(@target.project), class: 'navigation')%>
     </div>
   </section>
 </section>
