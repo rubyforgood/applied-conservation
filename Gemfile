@@ -37,4 +37,5 @@ group :test do
   gem 'capybara'
   gem 'chromedriver-helper'
   gem 'launchy'
+  gem 'rails-controller-testing'
 end

@@ -1,5 +1,5 @@
 class TargetHealthAttributeRatingsController < ApplicationController
-  before_action :load_target_health_attribute_rating, only: %i[show]
+  before_action :load_target_health_attribute_rating, only: %i[show edit]
   def update
     @target_health_attr_rating = TargetHealthAttributeRating
                                  .find(params[:id])
@@ -20,6 +20,11 @@ class TargetHealthAttributeRatingsController < ApplicationController
     @project = @target.project
   end
 
+  def edit
+    @target = @target_health_attr_rating.target
+    @project = @target.project
+  end
+
   def load_target_health_attribute_rating
     @target_health_attr_rating = TargetHealthAttributeRating.find params[:id]
   end
@@ -28,6 +33,6 @@ class TargetHealthAttributeRatingsController < ApplicationController
 
   def target_health_attribute_rating_params
     params.require(:target_health_attribute_rating)
-          .permit(:rating)
+          .permit(:rating, :name)
   end
 end

@@ -62,8 +62,14 @@ feature 'Target management', js: true do
     it 'User can edit target health attribute from edit form' do
       visit "/targets/#{target.id}"
       click_link target_health_attribute_rating.name
-
       expect(page.find('.page-heading')).to have_content target_health_attribute_rating.name
+
+      click_link 'Edit'
+      expect(page.find('.page-heading')).to have_content "Edit #{target_health_attribute_rating.name}"
+
+      fill_in 'Name', with: 'New Name'
+      click_button 'Save'
+      expect(page.find('.page-heading')).to have_content target.name
     end
   end
 end

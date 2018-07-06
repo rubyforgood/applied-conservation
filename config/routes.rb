@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     put :pickup
     put :done, :archive
   end
-  resources :target_health_attribute_ratings, only: [:show, :update]
+  resources :target_health_attribute_ratings, only: [:show, :update, :edit]
 
   devise_for :users
 end
