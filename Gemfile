@@ -7,6 +7,7 @@ ruby '2.5.1'
 
 gem 'best_in_place', '~> 3.0.1'
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'breadcrumbs_on_rails'
 gem 'devise'
 gem 'font-awesome-rails'
 gem 'jquery-rails'

@@ -19,6 +19,9 @@
     <% if @project&.valid? %>
       <%= render layout: 'layouts/project' do %>
         <section class="main-section">
+          <div class="breadcrumbs">
+            <%= render_breadcrumbs %>
+          </div>
           <%= yield %>
         </section>
       <% end %>

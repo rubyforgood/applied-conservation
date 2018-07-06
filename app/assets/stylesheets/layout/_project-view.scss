@@ -4,8 +4,8 @@
   section {
     margin-top: 1rem;
     &.next-event {
+      width: 30%;
       align-items: center;
-      display: flex;
       .heading,
       .details p {
         margin: 0;

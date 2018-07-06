@@ -1,5 +1,6 @@
 class TargetHealthAttributeRatingsController < ApplicationController
   before_action :load_target_health_attribute_rating, only: %i[show edit]
+
   def update
     @target_health_attr_rating = TargetHealthAttributeRating
                                  .find(params[:id])
@@ -15,18 +16,25 @@ class TargetHealthAttributeRatingsController < ApplicationController
     end
   end
 
-  def show
-    @target = @target_health_attr_rating.target
-    @project = @target.project
-  end
+  def show; end
 
   def edit
-    @target = @target_health_attr_rating.target
-    @project = @target.project
+    add_breadcrumb(
+      'Edit',
+      edit_target_health_attribute_rating_path(@target_health_attr_rating)
+    )
   end
 
   def load_target_health_attribute_rating
     @target_health_attr_rating = TargetHealthAttributeRating.find params[:id]
+    @target = @target_health_attr_rating.target
+    @project = @target.project
+
+    add_breadcrumb @target.name, target_path(@target)
+    add_breadcrumb(
+      @target_health_attr_rating.name,
+      target_health_attribute_rating_path(@target_health_attr_rating)
+    )
   end
 
   private

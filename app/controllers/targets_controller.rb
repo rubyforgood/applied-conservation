@@ -8,15 +8,14 @@ class TargetsController < ApplicationController
 
   def new
     @target = Target.new
+    add_breadcrumb 'New Target', new_project_target_path(@project)
   end
 
   def edit
-    @project = @target.project
+    add_breadcrumb 'Edit', edit_target_path(@target)
   end
 
-  def show
-    @project = @target.project
-  end
+  def show; end
 
   def create
     new_target = Target.new(
@@ -56,10 +55,16 @@ class TargetsController < ApplicationController
 
   def load_target
     @target = Target.find params[:id]
+    @project = @target.project
+    add_breadcrumb @project.name, project_path(@project)
+    add_breadcrumb 'Targets', project_targets_path(@project)
+    add_breadcrumb @target.name, target_path(@target)
   end
 
   def load_project
     @project = Project.find params[:project_id]
+    add_breadcrumb @project.name, project_path(@project)
+    add_breadcrumb 'Targets', project_targets_path(@project)
   end
 
   def target_params

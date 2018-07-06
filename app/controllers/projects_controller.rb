@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ProjectsController < ApplicationController
-  before_action :set_project, only: %i[show edit update]
+  before_action :load_project, only: %i[show edit update]
 
   def index
     @projects = Project.all
@@ -41,8 +41,10 @@ class ProjectsController < ApplicationController
 
   private
 
-  def set_project
+  def load_project
     @project = Project.find(params[:id])
+    add_breadcrumb 'Projects', :projects_path
+    add_breadcrumb @project.name, project_path(@project)
   end
 
   def project_params

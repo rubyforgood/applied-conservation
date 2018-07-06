@@ -30,3 +30,25 @@ img {
 	// ⚠️ Using this class will hide content from the viewport AND from screenreaders; use sparingly and with thoughtful intention
 	display: none;
 }
+
+.breadcrumbs {
+  font-family: $font-base;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+
+  a {
+    cursor: pointer;
+    color: $color-primary-action;
+    text-decoration: none;
+    border-bottom: 2px solid $color-primary-action;
+
+    &:hover {
+      color: darken($color-primary-action, 20%);
+    }
+
+    &:visited {
+      color: $color-primary-action;
+    }
+  }
+}

@@ -14,8 +14,7 @@
 
 .form-footer {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  justify-content: flex-end;
   margin-top: 2rem;
 }
 
@@ -32,7 +31,6 @@
 
 .form-section {
   width: 60%;
-  padding: 0 $page-side-margin;
 }
 
 .form-field {
