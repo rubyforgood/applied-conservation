@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :target_health_attribute_rating do
+  factory :health_assessment do
     name 'Test Target Health Attribute'
     target
   end

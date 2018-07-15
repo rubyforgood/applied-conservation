@@ -9,7 +9,7 @@ describe TargetService do
       expect { target_service.create }.to change(Target, :count).by 1
     end
 
-    describe 'generating target_health_attribute_ratings' do
+    describe 'generating health_assessments' do
       before do
         FactoryBot.create(:health_attribute, target_type: FactoryBot.create(:target_type))
       end
@@ -19,18 +19,18 @@ describe TargetService do
         target = FactoryBot.build(:target, target_type: health_attribute.target_type)
         target_service = TargetService.new target
 
-        expect { target_service.create }.to change(TargetHealthAttributeRating, :count).by 1
+        expect { target_service.create }.to change(HealthAssessment, :count).by 1
 
         target.reload
-        health_attribute_target_rating = target.target_health_attribute_ratings.last
-        expect(health_attribute_target_rating.name).to eq health_attribute.title
+        health_assessment = target.health_assessments.last
+        expect(health_assessment.name).to eq health_attribute.title
       end
 
-      it 'does not generate any target_health_attribute_ratings when target has no target_type' do
+      it 'does not generate any health_assessment when target has no target_type' do
         target = FactoryBot.build(:target, target_type: nil)
         target_service = TargetService.new(target)
 
-        expect { target_service.create }.to_not change(TargetHealthAttributeRating, :count)
+        expect { target_service.create }.to_not change(HealthAssessment, :count)
       end
     end
 

@@ -56,16 +56,16 @@ feature 'Target management', js: true do
   end
 
   describe 'Editing target health attributes' do
-    let(:target_health_attribute_rating) { FactoryBot.create(:target_health_attribute_rating) }
-    let!(:target) { target_health_attribute_rating.target }
+    let(:health_assessment) { FactoryBot.create(:health_assessment) }
+    let!(:target) { health_assessment.target }
 
     it 'User can edit target health attribute from edit form' do
       visit "/targets/#{target.id}"
-      click_link target_health_attribute_rating.name
-      expect(page.find('.page-heading')).to have_content target_health_attribute_rating.name
+      click_link health_assessment.name
+      expect(page.find('.page-heading')).to have_content health_assessment.name
 
       click_link 'Edit'
-      expect(page.find('.page-heading')).to have_content "Edit #{target_health_attribute_rating.name}"
+      expect(page.find('.page-heading')).to have_content "Edit #{health_assessment.name}"
 
       fill_in 'Name', with: 'New Name'
       click_button 'Save'

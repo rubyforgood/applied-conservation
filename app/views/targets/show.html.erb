@@ -13,15 +13,15 @@
         </tr>
       </thead>
       <tbody>
-        <% @target.target_health_attribute_ratings.each do |health_attr_rating| %>
+        <% @target.health_assessments.each do |health_attr_rating| %>
           <tr>
-            <th><%= link_to health_attr_rating.name, target_health_attribute_rating_path(health_attr_rating) %></th>
+            <th><%= link_to health_attr_rating.name, health_assessment_path(health_attr_rating) %></th>
             <th>
               <%= best_in_place health_attr_rating, :rating, as: :select,
                                 place_holder: "click me to edit",
                                 class: 'button-secondary',
                                 collection: {"good" => "Good", "bad" => "Bad"},
-                                url: target_health_attribute_rating_path(health_attr_rating) %>
+                                url: health_assessment_path(health_attr_rating) %>
             </th>
           </tr>
         <% end %>
