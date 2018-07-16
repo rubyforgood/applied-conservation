@@ -10,12 +10,14 @@ Rails.application.routes.draw do
     end
     resources :tasks, only: [:new, :index]
   end
-  resources :targets, only: [:create, :show, :update, :edit]
+  resources :targets, only: [:create, :show, :update, :edit] do
+    resources :health_assessments, only: [:new]
+  end
   resources :tasks, only: [:create, :show, :update, :edit] do
     put :pickup
     put :done, :archive
   end
-  resources :health_assessments, only: [:show, :update, :edit]
+  resources :health_assessments, only: [:create, :show, :update, :edit]
 
   devise_for :users
 end
