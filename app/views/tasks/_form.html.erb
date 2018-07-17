@@ -1,6 +1,6 @@
 <section class="form-section">
-  <h2 class="heading page-heading"><%= heading %></h2>
   <%= form_for @task do |f| %>
+    <h2 class="heading page-heading"><%= heading %></h2>
     <%= f.label :name, class: "form-label" %>
     <%= f.text_field :name, class: 'form-field' %>
     <%= f.label :due_on, class: "form-label" %>

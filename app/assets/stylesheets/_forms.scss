@@ -14,8 +14,12 @@
 
 .form-footer {
   display: flex;
-  justify-content: flex-end;
   margin-top: 2rem;
+
+  *[type="submit"] {
+    min-width: 20rem;
+    width: 70%;
+  }
 }
 
 .form-label {
@@ -34,10 +38,12 @@
 
   form {
     flex: 2;
+    max-width: 50%;
   }
 
   aside {
     flex: 3;
+    flex-shrink: 1;
   }
 }
 
@@ -58,6 +64,7 @@
   cursor: pointer;
   display: block;
   width: 70%;
+  min-width: 20rem;
   height: 2.5rem;
   background-color: white;
   border: 1px solid rgb(166, 166, 166);

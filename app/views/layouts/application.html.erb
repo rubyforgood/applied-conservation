@@ -16,17 +16,17 @@
   <body>
     <%= react_component 'layouts/Header' %>
     <%= render partial: 'layouts/flash_messages' %>
-    <% if @project&.valid? %>
-      <%= render layout: 'layouts/project' do %>
-        <section class="main-section">
-          <div class="breadcrumbs">
-            <%= render_breadcrumbs %>
-          </div>
-          <%= yield %>
-        </section>
+    <section class="main-section">
+      <% if @project&.valid? %>
+        <%= render layout: 'layouts/project' do %>
+            <div class="breadcrumbs">
+              <%= render_breadcrumbs %>
+            </div>
+            <%= yield %>
+        <% end %>
+      <% else %>
+        <%= yield %>
       <% end %>
-    <% else %>
-      <%= yield %>
-    <% end %>
+    </section>
   </body>
 </html>

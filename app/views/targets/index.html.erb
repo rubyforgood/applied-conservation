@@ -15,7 +15,7 @@
     <tbody>
     <% @targets.each do |target| %>
       <tr>
-        <th><%= link_to target.name, target_path(target) %></th>
+        <th><%= link_to target.name, target_path(target), class: 'navigation' %></th>
         <td><%= target.description %></td>
         <td><%= target.target_type&.name %></td>
       </tr>

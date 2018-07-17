@@ -64,10 +64,6 @@ class HealthAssessmentsController < ApplicationController
   def load_target
     @target = Target.find(params[:target_id])
     add_breadcrumb @target.name, target_path(@target)
-    add_breadcrumb(
-      'New Health Attribute',
-      new_target_health_assessment_path(@target)
-    )
     @project = @target.project
   end
 
