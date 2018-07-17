@@ -14,7 +14,7 @@ describe TargetService do
         FactoryBot.create(:health_attribute, target_type: FactoryBot.create(:target_type))
       end
 
-      it 'generates a list of target_health_attributes based on the given target_type' do
+      it 'generates a list of health_assessments based on the given target_type' do
         health_attribute = FactoryBot.create(:health_attribute)
         target = FactoryBot.build(:target, target_type: health_attribute.target_type)
         target_service = TargetService.new target

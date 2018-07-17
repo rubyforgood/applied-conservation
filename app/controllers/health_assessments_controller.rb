@@ -1,5 +1,5 @@
 class HealthAssessmentsController < ApplicationController
-  before_action :load_health_assessment, only: %i[show edit]
+  before_action :load_health_assessment, only: %i[show edit destroy]
   before_action :load_target, only: %i[create new]
 
   def update
@@ -41,6 +41,12 @@ class HealthAssessmentsController < ApplicationController
       'Edit',
       edit_health_assessment_path(@health_assessment)
     )
+  end
+
+  def destroy
+    target = @health_assessment.target
+    @health_assessment.destroy!
+    redirect_to target_path(target)
   end
 
   def load_health_assessment

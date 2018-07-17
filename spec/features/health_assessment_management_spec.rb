@@ -30,4 +30,14 @@ describe 'Health Assessment Management', js: true do
     expect(page.find('.page-heading')).to have_content target.name
     expect(page.find('.index-table')).to have_content 'Testing'
   end
+
+  it 'User can delete a health_assessment' do
+    health_assessment = create(:health_assessment, target: target)
+
+    visit "/targets/#{target.id}"
+    click_link "delete-health-assessment-#{health_assessment.id}"
+
+    expect(page.find('.page-heading')).to have_content target.name
+    expect(page.find('.health-assessments')).to_not have_content health_assessment.name
+  end
 end

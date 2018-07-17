@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     put :pickup
     put :done, :archive
   end
-  resources :health_assessments, only: [:create, :show, :update, :edit]
+  resources :health_assessments, only: [:create, :show, :update, :edit, :destroy]
 
   devise_for :users
 end

@@ -1,0 +1,36 @@
+`<section class="health-assessments">
+  <h3>Health Attributes</h3>
+  <table class="index-table" >
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Rating</th>
+      <th/>
+    </tr>
+    </thead>
+    <tbody>
+    <% health_assessments.each do |health_assessment| %>
+      <tr>
+        <th scope="row"><%= link_to health_assessment.name, health_assessment_path(health_assessment), class: 'navigation' %></th>
+        <td>
+          <%= best_in_place health_assessment, :rating, as: :select,
+                            place_holder: "click me to edit",
+                            class: 'button-secondary',
+                            collection: {"good" => "Good", "bad" => "Bad"},
+                            url: health_assessment_path(health_assessment) %>
+        </td>
+        <td>
+          <%= link_to 'Delete', health_assessment_path(health_assessment),
+                      method: :delete, id: "delete-health-assessment-#{health_assessment.id}", class: 'delete' %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <div class="form-footer">
+    <%= link_to(new_target_health_assessment_path(@target.id), class: 'navigation') do %>
+      <%= fa_icon 'plus' %>
+      Add Health Attribute
+    <% end %>
+  </div>
+</section>

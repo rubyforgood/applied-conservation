@@ -38,4 +38,14 @@ describe 'HealthAssessment Requests', type: :request do
       expect(health_assessment.name).to eq 'new name'
     end
   end
+
+  describe 'DELETE destroy' do
+    it 'deletes the health assessment' do
+      deleted_id = health_assessment.id
+
+      delete "/health_assessments/#{deleted_id}"
+
+      expect(HealthAssessment.where(id: deleted_id)).to be_empty
+    end
+  end
 end
