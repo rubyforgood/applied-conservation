@@ -3,17 +3,23 @@
     <% flash.each do |key, msg| %>
       <% if msg %>
         <div class="alert-<%= key %> alert">
-          <% if msg.kind_of? Array %>
-            <ul>
-              <% msg.each do |m| %>
-                <li>
-                  <%= m %>
-                </li>
-              <% end %>
-            </ul>
-          <% else %>
-            <%= msg %>
+          <% if key == 'notice' %>
+            <i class="fa fa-check-circle alert-icon"/>
+          <% elsif key == 'error' %>
+            <i class="fa fa-exclamation-circle alert-icon"/>
           <% end %>
+          <div class="alert-body">
+            <%= render 'layouts/alert_header', alert_type: key %>
+            <% if msg.kind_of? Array %>
+              <ul class="alert-msg-list">
+                <% msg.each do |m| %>
+                  <li><%= m %></li>
+                <% end %>
+              </ul>
+            <% else %>
+              <%= msg %>
+            <% end %>
+          </div>
         </div>
       <% end %>
     <% end %>

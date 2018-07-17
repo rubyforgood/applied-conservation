@@ -11,8 +11,6 @@ $color-thyme: #476144;
 $color-sage: #668063;
 $color-mustard: #dde2a4;
 $color-slate: #535358;
-$color-tangerine: #cc5104;
-$color-lemon: #f2c641;
 $color-indigo: #3949ab;
 
 $color-offwhite: #fcfcf7;
@@ -21,8 +19,8 @@ $color-offblack: darken($color-slate, 10%);
 $color-primary: $color-thyme;
 $color-secondary: $color-mustard;
 $color-primary-action: $color-indigo;
-$color-warn: #D13135;
-$color-alert: $color-tangerine;
-$color-notice: $color-lemon;
+$color-error: #8C2420;
+$color-error-background: #FCD9D8;
+$color-success-background: #DCEFDD;
 
 $page-side-margin: 2.5rem;

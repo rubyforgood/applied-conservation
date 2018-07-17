@@ -25,15 +25,15 @@ a.delete {
   cursor: pointer;
   font-family: $font-base;
   font-weight: bold;
-  color: $color-warn;
+  color: $color-error;
   text-decoration: none;
-  border-bottom: 2px solid $color-warn;
+  border-bottom: 2px solid $color-error;
 
   &:hover {
-    color: darken($color-warn, 10%);
+    color: darken($color-error, 10%);
   }
 
   &:visited {
-    color: $color-warn;
+    color: $color-error;
   }
 }
