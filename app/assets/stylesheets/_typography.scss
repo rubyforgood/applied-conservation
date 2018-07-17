@@ -1,7 +1,6 @@
 @import "mixins";
 .heading {
 	section & {
-		color: mix($color-slate, $color-offwhite, 95%);
 		font-weight: 500;
 	}
 }

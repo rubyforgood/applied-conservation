@@ -30,7 +30,27 @@
 }
 
 .form-section {
-  width: 60%;
+  display: flex;
+
+  form {
+    flex: 2;
+  }
+
+  aside {
+    flex: 3;
+  }
+}
+
+.hint {
+  border: 1px solid rgb(166, 166, 166);
+  border-radius: 5px;
+  padding: 0 1rem;
+  margin: auto;
+  color: $color-slate;
+}
+
+.hints {
+  margin: 0 3rem;
 }
 
 .form-field {

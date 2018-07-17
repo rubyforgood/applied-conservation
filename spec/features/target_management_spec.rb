@@ -26,6 +26,10 @@ feature 'Target management', js: true do
 
     visit "/projects/#{project.id}/targets/new"
 
+    # check for hints
+    expect(page.find('.hints')).to have_content('Start with Ecosystem Targets')
+
+    # fill out form
     fill_in_autosuggest('Name', with: 'NEW TARGET')
     select('Terrestrial Ecosystem', from: 'target[target_type_id]')
     fill_in('Description', with: 'TARGET DESCRIPTION')
