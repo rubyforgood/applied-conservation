@@ -4,10 +4,7 @@ class TargetService
   end
 
   def create
-    return unless @target.save
-
     generate_health_assessments if @target.target_type
-    @target
   end
 
   private

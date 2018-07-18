@@ -3,10 +3,10 @@
     <% flash.each do |key, msg| %>
       <% if msg %>
         <div class="alert-<%= key %> alert">
-          <% if key == 'notice' %>
-            <i class="fa fa-check-circle alert-icon"/>
+          <% if key == 'success' %>
+            <%= fa_icon 'check-circle', class: 'alert-icon'  %>
           <% elsif key == 'error' %>
-            <i class="fa fa-exclamation-circle alert-icon"/>
+            <%= fa_icon 'exclamation-circle', class: 'alert-icon' %>
           <% end %>
           <div class="alert-body">
             <%= render 'layouts/alert_header', alert_type: key %>

@@ -18,21 +18,23 @@ class TargetsController < ApplicationController
   def show; end
 
   def create
-    new_target = Target.new(
-      target_params.merge(project_id: params[:project_id])
-    )
-    @target = TargetService.new(new_target).create
-    if @target
+    @target = Target.new(target_params)
+    if @target.save
+      TargetService.new(@target).create
+      flash[:notice] = 'Target created'
       redirect_to target_path(@target)
     else
-      redirect_to :new
+      flash.now[:error] = @target.errors.full_messages
+      render :new
     end
   end
 
   def update
     if @target.update(target_params)
+      flash[:success] = 'Target updated'
       redirect_to project_targets_url(@target.project)
     else
+      flash.now[:error] = @target.errors.full_messages
       render :edit
     end
   end
@@ -68,7 +70,8 @@ class TargetsController < ApplicationController
   end
 
   def target_params
-    params.require(:target)
-          .permit(:name, :description, :target_type_id)
+    target_params = params.require(:target)
+                          .permit(:name, :description, :target_type_id)
+    target_params.merge(project_id: params[:project_id])
   end
 end

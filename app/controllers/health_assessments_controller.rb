@@ -1,30 +1,32 @@
 class HealthAssessmentsController < ApplicationController
-  before_action :load_health_assessment, only: %i[show edit destroy]
+  before_action :load_health_assessment, only: %i[show edit destroy update]
   before_action :load_target, only: %i[create new]
 
   def update
-    @health_assessment = HealthAssessment
-                         .find(params[:id])
-    @health_assessment.update(
-      health_assessment_params
-    )
-
-    respond_to do |format|
-      format.html do
-        redirect_to target_url(@health_assessment.target)
+    if @health_assessment.update(health_assessment_params)
+      flash[:success] = 'Health Attribute updated'
+      respond_to do |format|
+        format.html do
+          redirect_to target_url(@health_assessment.target)
+        end
+        format.json { respond_with_bip(@health_assessment) }
       end
-      format.json { respond_with_bip(@health_assessment) }
+    else
+      flash[:error] = @health_assessment.errors.full_messages
+      render :edit
     end
   end
 
   def create
-    new_health_assessment = HealthAssessment.new(
+    @health_assessment = HealthAssessment.new(
       health_assessment_params.merge(target_id: params[:target_id])
     )
-    if new_health_assessment.save
+    if @health_assessment.save
+      flash[:success] = 'Health Attribute Created'
       redirect_to target_path(@target)
     else
-      redirect_to :new
+      flash.now[:error] = @health_assessment.errors.full_messages
+      render :new
     end
   end
 
@@ -45,7 +47,9 @@ class HealthAssessmentsController < ApplicationController
 
   def destroy
     target = @health_assessment.target
+
     @health_assessment.destroy!
+    flash[:success] = 'Target Deleted'
     redirect_to target_path(target)
   end
 
