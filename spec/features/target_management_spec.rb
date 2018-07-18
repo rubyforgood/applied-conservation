@@ -22,7 +22,7 @@ feature 'Target management', js: true do
   end
 
   it 'User can create a new Target' do
-    HealthAttribute.create(title: 'Ground Quality', target_type: terrestrial_target_type)
+    DefaultHealthAttribute.create(name: 'Ground Quality', target_type: terrestrial_target_type)
 
     visit "/projects/#{project.id}/targets/new"
 
@@ -56,6 +56,8 @@ feature 'Target management', js: true do
   end
 
   describe 'Editing target health attributes' do
+    # let(:health_rating_type) { FactoryBot.create(:health_rating_type) }
+    # let(:health_rating) { FactoryBot.create(:health_rating, health_rating_type: health_rating_type) }
     let(:health_assessment) { FactoryBot.create(:health_assessment) }
     let!(:target) { health_assessment.target }
 

@@ -1,11 +1,8 @@
 FactoryBot.define do
-  factory :health_assessment do
-    health_attribute
+  factory :default_health_attribute do
+    sequence(:name) { |n| "Test DefaultHealthAttribute #{n}" }
+    target_type
     association :created_by, factory: [:user]
     association :updated_by, factory: [:user]
-
-    trait :with_rating do
-      health_rating
-    end
   end
 end

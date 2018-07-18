@@ -1,4 +1,4 @@
 class TargetType < ApplicationRecord
   has_many :targets
-  has_many :health_attributes
+  has_many :default_health_attributes
 end
