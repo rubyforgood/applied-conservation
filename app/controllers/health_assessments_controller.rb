@@ -4,7 +4,7 @@ class HealthAssessmentsController < ApplicationController
 
   def update
     if @health_assessment.update(health_assessment_params)
-      flash[:success] = 'Health Attribute updated'
+      flash[:success] = 'Health Assessment updated'
       respond_to do |format|
         format.html do
           redirect_to target_url(@health_assessment.target)
@@ -22,7 +22,7 @@ class HealthAssessmentsController < ApplicationController
       health_assessment_params.merge(target_id: params[:target_id])
     )
     if @health_assessment.save
-      flash[:success] = 'Health Attribute Created'
+      flash[:success] = 'Health Assessment Created'
       redirect_to target_path(@target)
     else
       flash.now[:error] = @health_assessment.errors.full_messages
@@ -32,7 +32,7 @@ class HealthAssessmentsController < ApplicationController
 
   def new
     @health_assessment = HealthAssessment.new
-    add_breadcrumb 'New Health Attribute',
+    add_breadcrumb 'New Health Assessment',
                    new_target_health_assessment_path(@target)
   end
 

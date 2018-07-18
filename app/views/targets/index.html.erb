@@ -3,25 +3,29 @@
     <h2 class="heading page-heading">Targets</h2>
     <%= link_to 'Edit all', edit_all_project_targets_path(@project), class: 'navigation' %>
   </header>
-  <table class="index-table">
-    <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Type</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    <% @targets.each do |target| %>
+  <% if @targets.empty? %>
+    <p>No Targets yet</p>
+  <% else %>
+    <table class="index-table">
+      <thead>
       <tr>
-        <th><%= link_to target.name, target_path(target), class: 'navigation' %></th>
-        <td><%= target.description %></td>
-        <td><%= target.target_type&.name %></td>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Type</th>
       </tr>
-    <% end %>
-    </tbody>
-  </table>
+      </thead>
+
+      <tbody>
+      <% @targets.each do |target| %>
+        <tr>
+          <th><%= link_to target.name, target_path(target), class: 'navigation' %></th>
+          <td><%= target.description %></td>
+          <td><%= target.target_type&.name %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  <% end %>
   <div class="form-footer">
     <%= link_to(new_project_target_path(@project.id), class: 'navigation') do %>
       <%= fa_icon 'plus' %>

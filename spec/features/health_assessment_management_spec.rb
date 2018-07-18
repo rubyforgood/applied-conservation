@@ -22,7 +22,7 @@ describe 'Health Assessment Management', js: true do
 
   it 'User can create a new health_assessment for a target' do
     visit "/targets/#{target.id}"
-    click_link 'Add Health Attribute'
+    click_link 'Add Health Assessment'
 
     fill_in 'Name', with: 'Testing'
     click_button 'Save'
