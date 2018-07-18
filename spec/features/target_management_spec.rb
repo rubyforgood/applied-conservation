@@ -46,7 +46,7 @@ feature 'Target management', js: true do
     target = FactoryBot.create(:target, project: project)
 
     visit "/targets/#{target.id}"
-    click_link 'Edit'
+    click_link "edit-target-#{target.id}"
 
     expect(page).to have_content "Edit #{target.name}"
 

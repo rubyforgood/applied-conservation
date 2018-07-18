@@ -11,7 +11,7 @@ describe 'Health Assessment Management', js: true do
       click_link health_assessment.name
       expect(page.find('.page-heading')).to have_content health_assessment.name
 
-      click_link 'Edit'
+      click_link "edit-health-assessment-#{health_assessment.id}"
       expect(page.find('.page-heading')).to have_content "Edit #{health_assessment.name}"
 
       fill_in 'Name', with: 'Edited Name'

@@ -1,35 +1,25 @@
 @import "mixins";
 
-.project-view {
-  section {
-    margin-top: 1rem;
-    &.next-event {
-      width: 30%;
-      align-items: center;
-      .heading,
-      .details p {
-        margin: 0;
-      }
-      .date {
-        border: 3px solid $color-mustard;
-        border-radius: 8px;
-        margin-right: 1rem;
-        text-align: center;
-        width: 60px;
-        .month {
-          background: $color-mustard;
-          padding: 6px;
-          text-transform: uppercase;
-        }
-      }
-      .heading {
-        @include rem(font-size, 15px);
-      }
-    }
-    &.files {
+.next-event {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .date {
+    border: 3px solid $color-mustard;
+    border-radius: 8px;
+    margin-right: 1rem;
+    text-align: center;
+    width: 60px;
+    .month {
+      background: $color-mustard;
+      padding: 6px;
+      text-transform: uppercase;
     }
   }
+}
 
+.project-view {
   @media (min-width: 680px) {
     display: flex;
     main {
@@ -89,16 +79,14 @@
   min-width: 9rem;
 }
 
-.project-heading {
-  font-family: $font-sans;
-  font-weight: normal;
-  font-size: 2.5rem;
-  margin: 1rem 0;
-}
-
 .sidebar-header {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 1rem;
+}
+
+.project-heading {
+  display: flex;
+  align-items: center;
 }

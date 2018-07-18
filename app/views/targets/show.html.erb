@@ -1,7 +1,10 @@
 <section class="page-section">
   <header class="page-header">
     <h2 class="heading page-heading"><%= @target.name %></h2>
-    <%= link_to('Edit', edit_target_path(@target), class: 'navigation') %>
+    <%= link_to 'Edit', edit_target_path(@target),
+                class: 'navigation',
+                id: "edit-target-#{@target.id}",
+                'aria-label' => "Edit Target #{@target.name}"%>
   </header>
   <%= render partial: 'health_assessments/index', locals: {health_assessments: @target.health_assessments}%>
 </section>

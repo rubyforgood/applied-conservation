@@ -1,6 +1,9 @@
 <section class="page-section">
   <header class="page-header">
     <h2 class="heading page-heading"><%= @health_assessment.name %></h2>
-    <%= link_to 'Edit', edit_health_assessment_path(@health_assessment), class: 'navigation' %>
+    <%= link_to 'Edit', edit_health_assessment_path(@health_assessment),
+                class: 'navigation',
+                id: "edit-health-assessment-#{@health_assessment.id}",
+                'aria-label' => "Edit Health Assessment #{@health_assessment.name}"%>
   </header>
 </section>

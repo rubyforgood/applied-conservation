@@ -5,8 +5,12 @@
   <aside class="status-sidebar">
     <header class="sidebar-header">
       <div class="project-image" aria-hidden="true"></div>
-      <h1 class="heading project-heading">
-        <%= link_to @project.name, project_url(@project), class: 'heading' %>
+      <h1 class="project-heading">
+        <%= link_to @project.name, project_url(@project), class: 'project-heading-link' %>
+        <%= link_to 'Edit', edit_project_path(@project),
+                    class: 'navigation',
+                    id: "edit-project-#{  @project.id}",
+                    'aria-label' => "edit project #{@project.name}"%>
       </h1>
     </header>
     <ol class="list-reset status-key">

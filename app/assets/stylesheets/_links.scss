@@ -16,9 +16,13 @@ a.navigation {
   }
 }
 
-a.heading {
+a.project-heading-link {
   text-decoration: none;
   color: $font-color;
+  font-family: $font-sans;
+  font-weight: normal;
+  font-size: 2.5rem;
+  margin: 1rem;
 }
 
 a.delete {
