@@ -16,7 +16,9 @@
   </head>
 
   <body>
-    <%= react_component 'layouts/Header' %>
+    <header class="app-header">
+      <a href="/" class="header-link"><img class="logo" alt="turboCAP" src=<%= asset_path('turbocap-logo.png')%>/></a>
+    </header>
     <%= render partial: 'layouts/flash_messages' %>
     <section class="main-section">
       <% if @project&.valid? %>
