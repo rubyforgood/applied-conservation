@@ -6,6 +6,10 @@ describe 'Project Requests', type: :request do
   let!(:task) { create(:task, project: project) }
   let!(:archived_task) { create(:task, :archived, project: project) }
 
+  before do
+    login_any_user
+  end
+
   describe 'GET index' do
     it 'returns Projects index page with created project' do
       get '/projects'

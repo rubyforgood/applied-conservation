@@ -3,6 +3,10 @@ require 'rails_helper'
 describe 'HealthAssessment Requests', type: :request do
   let(:target) { create(:target) }
 
+  before do
+    login_any_user
+  end
+
   describe 'PUT update' do
     let(:health_assessment) { create(:health_assessment, target: target, rating: nil) }
     it 'updates the health_assessment amd sends a success flash message' do

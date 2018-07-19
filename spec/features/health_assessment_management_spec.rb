@@ -3,6 +3,10 @@ require 'rails_helper'
 describe 'Health Assessment Management', js: true do
   let(:target) { create(:target) }
 
+  before do
+    login_any_user
+  end
+
   describe 'Editing health_assessments' do
     let!(:health_assessment) { create(:health_assessment, target: target) }
 

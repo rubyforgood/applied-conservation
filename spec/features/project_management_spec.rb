@@ -3,6 +3,10 @@ require 'rails_helper'
 feature 'Project management' do
   let!(:project) { create(:project) }
 
+  before do
+    login_any_user
+  end
+
   it 'User can view all projects and project details' do
     visit root_path
 
