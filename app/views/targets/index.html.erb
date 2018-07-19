@@ -9,6 +9,7 @@
     <table class="index-table">
       <thead>
       <tr>
+        <th/>
         <th>Name</th>
         <th>Description</th>
         <th>Type</th>
@@ -18,6 +19,9 @@
       <tbody>
       <% @targets.each do |target| %>
         <tr>
+          <td class="icon" aria-hidden="true">
+            <%= fa_icon target.target_type&.icon_name || 'question' %>
+          </td>
           <th><%= link_to target.name, target_path(target), class: 'navigation' %></th>
           <td><%= target.description %></td>
           <td><%= target.target_type&.name %></td>

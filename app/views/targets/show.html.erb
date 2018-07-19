@@ -1,6 +1,6 @@
 <section class="page-section">
   <header class="page-header">
-    <h2 class="heading page-heading"><%= @target.name %></h2>
+    <h2 class="heading page-heading"><%= fa_icon @target.target_type&.icon_name %>  <%= @target.name %></h2>
     <%= link_to 'Edit', edit_target_path(@target),
                 class: 'navigation',
                 id: "edit-target-#{@target.id}",
