@@ -55,3 +55,4 @@ yarn-debug.log*
 yarn-error.log*
 .yarn-integrity
 .idea/*
+app/assets/.DS_Store

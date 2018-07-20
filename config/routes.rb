@@ -19,5 +19,6 @@ Rails.application.routes.draw do
   end
   resources :health_assessments, only: [:create, :show, :update, :edit, :destroy]
 
+  ActiveAdmin.routes(self)
   devise_for :users
 end

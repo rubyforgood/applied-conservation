@@ -14,7 +14,7 @@ feature 'Task management' do
   let!(:task_three) { create(:task, name: task_three_name, project: project, user: user, status: 'In Progress') }
 
   before do
-    login_user(user)
+    sign_in(user)
   end
 
   scenario 'User can add a new Task' do

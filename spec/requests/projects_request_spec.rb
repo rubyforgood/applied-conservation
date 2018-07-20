@@ -7,7 +7,7 @@ describe 'Project Requests', type: :request do
   let!(:archived_task) { create(:task, :archived, project: project) }
 
   before do
-    login_any_user
+    sign_in(create(:user))
   end
 
   describe 'GET index' do

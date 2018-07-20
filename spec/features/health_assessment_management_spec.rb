@@ -4,7 +4,7 @@ describe 'Health Assessment Management', js: true do
   let(:target) { create(:target) }
 
   before do
-    login_any_user
+    sign_in(create(:user))
   end
 
   describe 'Editing health_assessments' do

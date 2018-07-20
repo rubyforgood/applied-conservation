@@ -4,7 +4,7 @@ describe 'HealthAssessment Requests', type: :request do
   let(:target) { create(:target) }
 
   before do
-    login_any_user
+    sign_in(create(:user))
   end
 
   describe 'PUT update' do

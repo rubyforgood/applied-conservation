@@ -10,6 +10,14 @@
           <b>Signed in as: </b>
           <%= current_user.email %>
         </li>
+        <% if current_user.admin? %>
+          <li class="user-dropdown-item">
+            <%= link_to(admin_dashboard_path, class: 'navigation') do %>
+              <%= fa_icon 'user-circle' %>
+              Admin
+            <% end %>
+          </li>
+         <% end %>
         <li class="user-dropdown-item">
           <%= link_to(destroy_user_session_path, method: :delete, class: 'navigation', id: 'sign-out-link') do %>
             <%= fa_icon 'sign-out-alt' %>

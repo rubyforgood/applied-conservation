@@ -18,6 +18,7 @@ gem 'react-rails'
 gem 'sass-rails'
 gem 'skylight'
 gem 'webpacker'
+gem 'activeadmin'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

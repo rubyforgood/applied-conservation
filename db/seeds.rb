@@ -29,3 +29,4 @@ Target.find_or_create_by!(
   description: "Emily's Lake is small lake outside Washington DC that is home to many unqiue and migratory birds. etc.",
   project: project2,
 )
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

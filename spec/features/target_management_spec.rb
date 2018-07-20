@@ -8,7 +8,7 @@ feature 'Target management', js: true do
   let!(:terrestrial_target_type) { TargetType.create(name: 'Terrestrial Ecosystem') }
 
   before do
-    login_any_user
+    sign_in(create(:user))
   end
 
   it 'User can view all targets for a Project' do

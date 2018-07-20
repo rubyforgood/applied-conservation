@@ -4,7 +4,7 @@ describe 'Target Requests', type: :request do
   let!(:project) { create(:project) }
 
   before do
-    login_any_user
+    sign_in(create(:user))
   end
 
   describe 'POST create' do

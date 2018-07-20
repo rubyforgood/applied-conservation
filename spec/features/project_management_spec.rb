@@ -4,7 +4,7 @@ feature 'Project management' do
   let!(:project) { create(:project) }
 
   before do
-    login_any_user
+    sign_in(create(:user))
   end
 
   it 'User can view all projects and project details' do
