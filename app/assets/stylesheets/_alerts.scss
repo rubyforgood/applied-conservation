@@ -6,6 +6,8 @@
   border-radius: 5px;
   display: flex;
   align-items: center;
+  background-color: $color-error-background;
+  color: $color-error;
 }
 
 .alert-header {
@@ -21,11 +23,6 @@
 .alert-success {
   background-color: $color-success-background;
   color: #2A5A2D;
-}
-
-.alert-error {
-  background-color: $color-error-background;
-  color: $color-error;
 }
 
 .alert-msg-list {
