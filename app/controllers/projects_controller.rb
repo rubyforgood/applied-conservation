@@ -21,10 +21,10 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
 
     if @project.save
-      flash[:success] = 'Project created'
+      flash[:notice] = 'Project created'
       redirect_to @project
     else
-      flash.now[:error] = @project.errors.full_messages
+      flash.now[:alert] = @project.errors.full_messages
       render :new, status: :unprocessable_entity
     end
   end
@@ -33,10 +33,10 @@ class ProjectsController < ApplicationController
 
   def update
     if @project.update_attributes(project_params)
-      flash[:success] = 'Project updated'
+      flash[:notice] = 'Project updated'
       redirect_to @project
     else
-      flash.now[:error] = @project.errors.full_messages
+      flash.now[:alert] = @project.errors.full_messages
       render :edit, status: :unprocessable_entity
     end
   end

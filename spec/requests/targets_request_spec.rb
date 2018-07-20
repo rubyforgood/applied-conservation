@@ -29,7 +29,7 @@ describe 'Target Requests', type: :request do
              }
       end.to_not change(Target, :count)
 
-      expect(flash[:error]).to be_present
+      expect(flash[:alert]).to be_present
     end
   end
 
@@ -56,7 +56,7 @@ describe 'Target Requests', type: :request do
       target.reload
       expect(target.name).to eq 'Name'
 
-      expect(flash[:success]).to be_present
+      expect(flash[:notice]).to be_present
     end
 
     it 'does not update the target and sends an error flash message when invalid params' do
@@ -68,7 +68,7 @@ describe 'Target Requests', type: :request do
             }
       end.to_not change(target, :name)
 
-      expect(flash[:error]).to be_present
+      expect(flash[:alert]).to be_present
     end
   end
 end

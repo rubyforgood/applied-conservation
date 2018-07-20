@@ -1,0 +1,15 @@
+<header class="app-header">
+  <a href="/" class="header-link"><img class="logo" alt="turboCAP" src=<%= asset_path('turbocap-logo.png')%>/></a>
+  <% if user_signed_in? %>
+    <div>
+      <div class="app-header-user">
+        <%= fa_icon 'user' %>
+        <%= current_user.email %>
+      </div>
+      <div>
+        <%= fa_icon 'sign-out-alt' %>
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'logout-link' %>
+      </div>
+    </div>
+  <% end %>
+</header>

@@ -22,7 +22,7 @@ describe 'HealthAssessment Requests', type: :request do
       health_assessment.reload
       expect(health_assessment.rating).to eq 'good'
       expect(health_assessment.name).to eq 'new name'
-      expect(flash[:success]).to be_present
+      expect(flash[:notice]).to be_present
     end
 
     it 'does not update the health assessment and sends an error flash message when invalid params' do
@@ -37,7 +37,7 @@ describe 'HealthAssessment Requests', type: :request do
             }
       end.to_not change(health_assessment, :name)
 
-      expect(flash[:error]).to be_present
+      expect(flash[:alert]).to be_present
     end
   end
 
@@ -54,7 +54,7 @@ describe 'HealthAssessment Requests', type: :request do
       health_assessment = HealthAssessment.last
       expect(health_assessment.target).to eq target
       expect(health_assessment.name).to eq 'new name'
-      expect(flash[:success]).to be_present
+      expect(flash[:notice]).to be_present
     end
 
     it 'does not create a health_assessment and sends an error flash message when invalid params' do
@@ -68,7 +68,7 @@ describe 'HealthAssessment Requests', type: :request do
              }
       end.to_not change(HealthAssessment, :count)
 
-      expect(flash[:error]).to be_present
+      expect(flash[:alert]).to be_present
     end
   end
 
@@ -81,7 +81,7 @@ describe 'HealthAssessment Requests', type: :request do
       delete "/health_assessments/#{deleted_id}"
 
       expect(HealthAssessment.where(id: deleted_id)).to be_empty
-      expect(flash[:success]).to be_present
+      expect(flash[:notice]).to be_present
     end
   end
 end

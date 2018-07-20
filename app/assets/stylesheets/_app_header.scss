@@ -1,0 +1,22 @@
+.app-header {
+  background-color: #1e371d;
+  padding: 0 1.5rem;
+  margin-bottom: 1rem;
+  color: $color-offwhite;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .logo {
+    height: 5rem;
+    width: 7rem;
+  }
+}
+
+.logout-link {
+  color: $color-offwhite;
+}
+
+.app-header-user {
+  margin-bottom: .5rem;
+}

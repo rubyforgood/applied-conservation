@@ -24,17 +24,17 @@ class TargetsController < ApplicationController
       flash[:notice] = 'Target created'
       redirect_to target_path(@target)
     else
-      flash.now[:error] = @target.errors.full_messages
+      flash.now[:alert] = @target.errors.full_messages
       render :new
     end
   end
 
   def update
     if @target.update(target_params)
-      flash[:success] = 'Target updated'
+      flash[:notice] = 'Target updated'
       redirect_to project_targets_url(@target.project)
     else
-      flash.now[:error] = @target.errors.full_messages
+      flash.now[:alert] = @target.errors.full_messages
       render :edit
     end
   end
