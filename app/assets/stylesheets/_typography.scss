@@ -5,12 +5,6 @@
 	}
 }
 
-.header-link {
-  >h2 {
-    color: #fcfcf7;
-  }
-}
-
 .has-sidelines {
 	@include side-lined;
   align-self: center;

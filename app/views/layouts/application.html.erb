@@ -18,17 +18,21 @@
   <body>
     <%= render partial: 'layouts/app_header' %>
     <%= render partial: 'layouts/flash_messages' %>
-    <section class="main-section">
-      <% if @project&.valid? %>
-        <%= render layout: 'layouts/project' do %>
-            <div class="breadcrumbs">
-              <%= render_breadcrumbs %>
-            </div>
-            <%= yield %>
+    <% if !current_user %>
+      <%= yield %>
+    <% else %>
+      <div class="breadcrumbs">
+        <%= render_breadcrumbs %>
+      </div>
+      <section class="main-section">
+        <% if @project&.valid? %>
+          <%= render layout: 'layouts/project' do %>
+              <%= yield %>
+          <% end %>
+        <% else %>
+          <%= yield %>
         <% end %>
-      <% else %>
-        <%= yield %>
-      <% end %>
-    </section>
+      </section>
+    <% end %>
   </body>
 </html>

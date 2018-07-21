@@ -1,28 +1,37 @@
 <div class="site-wrapper project-view">
-  <main>
-    <%= yield %>
-  </main>
   <aside class="status-sidebar">
     <header class="sidebar-header">
       <div class="project-image" aria-hidden="true"></div>
       <h1 class="project-heading">
         <%= link_to @project.name, project_url(@project), class: 'project-heading-link' %>
-        <%= link_to 'Edit', edit_project_path(@project),
-                    class: 'navigation',
-                    id: "edit-project-#{  @project.id}",
-                    'aria-label' => "edit project #{@project.name}"%>
       </h1>
+      <%= link_to 'Edit Project', edit_project_path(@project),
+                  class: 'navigation',
+                  id: "edit-project-#{  @project.id}",
+                  'aria-label' => "edit project #{@project.name}"%>
     </header>
-    <ol class="list-reset status-key">
-      <li class="completed">
-        <%= link_to(project_targets_url(@project)) do %>
-          <span>Capture</span> <em class="has-sidelines">Targets</em>
-        <% end %>
-      </li>
-      <li class="completed"><a href=""><span>Describe</span> <em class="has-sidelines">Target Health</em></a></li>
-      <li class="current"><a href=""><span>Identify</span> <em class="has-sidelines">Threats</em></a></li>
-      <li><a href=""><span>Develop</span> <em class="has-sidelines">Strategies</em></a></li>
-      <li><a href=""><span>Complete</span> <em class="has-sidelines">Assessment</em></a></li>
-    </ol>
+    <div class="next-event">
+      <div class="date">
+        <div class="month">Aug</div>
+        18
+      </div>
+      <div class="event-details">
+        <h3 class="heading has-sidelines">Next Meeting</h3>
+        Teleconference at 3pm CST
+        <a href="">[more info]</a>
+      </div>
+    </div>
   </aside>
+  <main>
+    <nav class="nav-bar">
+      <%= link_to(project_targets_url(@project), class: target_tab?) do %>
+        <span>Capture</span> <em>Targets</em>
+      <% end %>
+      <a href=""><span>Describe</span> <em>Target Health</em></a>
+      <a href=""><span>Identify</span> <em>Threats</em></a>
+      <a href=""><span>Develop</span> <em>Strategies</em></a>
+      <a href=""><span>Complete</span> <em>Assessment</em></a>
+    </nav>
+    <%= yield %>
+  </main>
 </div>

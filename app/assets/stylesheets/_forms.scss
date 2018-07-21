@@ -5,7 +5,7 @@
   box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
   background-color: $color-primary-action;
   text-transform: uppercase;
-  color: #fff;
+  color: $font-color-light;
 
   &:hover {
     background-color: darken($color-primary-action, 10%);
@@ -35,6 +35,7 @@
 
 .form-section {
   display: flex;
+  padding: 1rem 0;
 
   form {
     flex: 2;
@@ -52,7 +53,7 @@
   border-radius: 5px;
   padding: 0 1rem;
   margin-bottom: 1rem;
-  color: $color-slate;
+  color: $font-color-lighter;
 }
 
 .hints {
@@ -69,6 +70,7 @@
   background-color: white;
   border: 1px solid rgb(166, 166, 166);
   font-size: 1rem;
+  padding-left: .5rem;
 }
 
 .Select .Select-control {
@@ -77,4 +79,5 @@
 
 textarea.form-field {
   height: 3rem;
+  padding: .5rem;
 }

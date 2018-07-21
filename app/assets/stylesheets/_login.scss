@@ -1,17 +1,19 @@
 .login-section {
   width: 30rem;
-  margin: auto;
+  margin: 1rem auto;
   display: flex;
   flex-direction: column;
-  padding-bottom: 3rem;
+  padding: 3rem 0;
   align-items: center;
-  background-color: #C5E1A5;
+  background-color: $app-background-color;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 5px 0px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 3px 1px -2px;
 
   .logo {
     height: 15rem;
-    width: 15rem;
-    padding-right: 7px;
+    width: 24rem;
+    background-color: $color-primary;
+    padding: 1rem;
+    margin-bottom: 1rem;
   }
 }
 

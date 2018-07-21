@@ -1,5 +1,10 @@
+.flash {
+  min-width: $page-min-width;
+  max-width: $page-max-with;
+  margin: 0 auto;
+}
 .alert {
-  margin: 0 2.5rem;
+  margin: .5rem 0;
   max-width: 50rem;
   padding: 1rem;
   font-weight: 500;
@@ -22,7 +27,7 @@
 
 .alert-notice {
   background-color: $color-success-background;
-  color: #2A5A2D;
+  color: $color-success;
 }
 
 .alert-msg-list {
