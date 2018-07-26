@@ -1,19 +1,39 @@
 class HealthAssessmentsController < ApplicationController
-  before_action :load_health_assessment, only: %i[show edit]
+  before_action :load_health_assessment, only: %i[show edit destroy update]
+  before_action :load_target, only: %i[create new]
 
   def update
-    @target_health_attr_rating = HealthAssessment
-                                 .find(params[:id])
-    @target_health_attr_rating.update(
-      health_assessment_params
-    )
-
-    respond_to do |format|
-      format.html do
-        redirect_to target_url(@target_health_attr_rating.target)
+    if @health_assessment.update(health_assessment_params)
+      flash[:notice] = 'Health Assessment updated'
+      respond_to do |format|
+        format.html do
+          redirect_to target_url(@health_assessment.target)
+        end
+        format.json { respond_with_bip(@health_assessment) }
       end
-      format.json { respond_with_bip(@target_health_attr_rating) }
+    else
+      flash[:alert] = @health_assessment.errors.full_messages
+      render :edit
     end
+  end
+
+  def create
+    @health_assessment = HealthAssessment.new(
+      health_assessment_params.merge(target_id: params[:target_id])
+    )
+    if @health_assessment.save
+      flash[:notice] = 'Health Assessment Created'
+      redirect_to target_path(@target)
+    else
+      flash.now[:alert] = @health_assessment.errors.full_messages
+      render :new
+    end
+  end
+
+  def new
+    @health_assessment = HealthAssessment.new
+    add_breadcrumb 'New Health Assessment',
+                   new_target_health_assessment_path(@target)
   end
 
   def show; end
@@ -21,20 +41,34 @@ class HealthAssessmentsController < ApplicationController
   def edit
     add_breadcrumb(
       'Edit',
-      edit_health_assessment_path(@target_health_attr_rating)
+      edit_health_assessment_path(@health_assessment)
     )
   end
 
+  def destroy
+    target = @health_assessment.target
+
+    @health_assessment.destroy!
+    flash[:notice] = 'Target Deleted'
+    redirect_to target_path(target)
+  end
+
   def load_health_assessment
-    @target_health_attr_rating = HealthAssessment.find params[:id]
-    @target = @target_health_attr_rating.target
+    @health_assessment = HealthAssessment.find params[:id]
+    @target = @health_assessment.target
     @project = @target.project
 
     add_breadcrumb @target.name, target_path(@target)
     add_breadcrumb(
-      @target_health_attr_rating.name,
-      health_assessment_path(@target_health_attr_rating)
+      @health_assessment.name,
+      health_assessment_path(@health_assessment)
     )
+  end
+
+  def load_target
+    @target = Target.find(params[:target_id])
+    add_breadcrumb @target.name, target_path(@target)
+    @project = @target.project
   end
 
   private

@@ -1,11 +1,15 @@
-require 'rails_helper'
 require_relative './form_helpers'
+require 'rails_helper'
 
 feature 'Target management', js: true do
   let(:target_one_name) { 'TEST TARGET ONE' }
   let(:target_two_name) { 'TEST TARGET TWO' }
   let(:project) { create(:project) }
   let!(:terrestrial_target_type) { TargetType.create(name: 'Terrestrial Ecosystem') }
+
+  before do
+    sign_in(create(:user))
+  end
 
   it 'User can view all targets for a Project' do
     Target.create(name: target_one_name, project: project)
@@ -26,6 +30,10 @@ feature 'Target management', js: true do
 
     visit "/projects/#{project.id}/targets/new"
 
+    # check for hints
+    expect(page.find('.hints')).to have_content('Start with Ecosystem Targets')
+
+    # fill out form
     fill_in_autosuggest('Name', with: 'NEW TARGET')
     select('Terrestrial Ecosystem', from: 'target[target_type_id]')
     fill_in('Description', with: 'TARGET DESCRIPTION')
@@ -42,7 +50,7 @@ feature 'Target management', js: true do
     target = FactoryBot.create(:target, project: project)
 
     visit "/targets/#{target.id}"
-    click_link 'Edit'
+    click_link "Edit"
 
     expect(page).to have_content "Edit #{target.name}"
 

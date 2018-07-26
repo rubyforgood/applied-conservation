@@ -1,108 +1,10 @@
 @import "mixins";
 
 .project-view {
-  section {
-    margin-top: 1rem;
-    &.next-event {
-      width: 30%;
-      align-items: center;
-      .heading,
-      .details p {
-        margin: 0;
-      }
-      .date {
-        border: 3px solid $color-mustard;
-        border-radius: 8px;
-        margin-right: 1rem;
-        text-align: center;
-        width: 60px;
-        .month {
-          background: $color-mustard;
-          padding: 6px;
-          text-transform: uppercase;
-        }
-      }
-      .heading {
-        @include rem(font-size, 15px);
-      }
-    }
-    &.files {
-    }
-  }
-
-  .main-section {
-    padding: 1rem $page-side-margin;
-  }
-
   @media (min-width: 680px) {
     display: flex;
     main {
       width: 100%;
     }
-    .status-sidebar {
-      min-width: 30%;
-      max-width: 400px;
-    }
   }
-}
-
-.status-sidebar {
-  .status-key {
-    background: $color-primary;
-    li {
-      a {
-        color: $color-offwhite;
-        display: block;
-        @include rem(font-size, 22px);
-        padding: 12px 8px;
-        text-align: center;
-        text-decoration: none;
-
-        &:hover, &:focus {
-          text-decoration: underline;
-        }
-      }
-      span {
-        font-family: $font-display;
-        @include rem(font-size, 15px);
-        font-style: italic;
-        font-weight: 300;
-        letter-spacing: 1px;
-        text-transform: lowercase;
-      }
-      em {
-        font-style: normal;
-        &.has-sidelines {
-          &:before, &:after {
-            margin-top: -22px;
-          }
-        }
-      }
-    }
-  }
-}
-
-.list-reset {
-  margin-top: 0;
-}
-
-.project-image {
-  border-radius: 50%;
-  background-image: image-url('yosemite_image');
-  min-height: 9rem;
-  min-width: 9rem;
-}
-
-.project-heading {
-  font-family: $font-sans;
-  font-weight: normal;
-  font-size: 2.5rem;
-  margin: 1rem 0;
-}
-
-.sidebar-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1rem;
 }

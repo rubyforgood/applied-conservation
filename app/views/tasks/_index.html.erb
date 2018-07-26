@@ -1,37 +1,43 @@
-<h2 class="heading has-sidelines">TODO</h2>
-<table class="index-table">
-  <thead>
-  <tr>
-    <th>Name</th>
-    <th>Assigned To</th>
-    <th>Status</th>
-    <th>Due Date</th>
-    <th>Description</th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% @tasks.each do |task| %>
+<header class="page-header">
+  <h2 class="heading page-heading">Tasks</h2>
+</header>
+<% if @tasks.empty? %>
+  <p>No Tasks yet</p>
+<% else %>
+  <table class="index-table">
+    <thead>
     <tr>
-      <th><%= link_to "#{task.name}", task_path(task) %></th>
-      <td><%= task.user&.email %></td>
-      <td><%= task.status %></td>
-      <td><%= task.due_on %></td>
-      <td><%= task.description %></td>
-      <td>
-        <% if current_user && task.user_id.nil? %>
-          <%= button_to 'Pick-Up Task', task_pickup_path(task), id: "pickup-task-#{task.id}", method: :put %>
-          <%= button_to 'X', task_archive_path(task), id: "archive-task-#{task.id}", method: :put %>
-        <% end %>
-        <% if current_user && task.user_id == current_user.id && task.status == 'In Progress' %>
-          <%= button_to 'Done', task_done_path(task), id: "done-task-#{task.id}", method: :put %>
-          <%= button_to 'X', task_archive_path(task), id: "archive-task-#{task.id}", method: :put %>
-        <% end %>
-      </td>
+      <th>Name</th>
+      <th>Assigned To</th>
+      <th>Status</th>
+      <th>Due Date</th>
+      <th>Description</th>
     </tr>
-  <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <th><%= link_to "#{task.name}", task_path(task), class: 'navigation' %></th>
+        <td><%= task.user&.email %></td>
+        <td><%= task.status %></td>
+        <td><%= task.due_on %></td>
+        <td><%= task.description %></td>
+        <td>
+          <% if current_user && task.user_id.nil? %>
+            <%= button_to 'Pick-Up Task', task_pickup_path(task), id: "pickup-task-#{task.id}", method: :put %>
+            <%= button_to 'X', task_archive_path(task), id: "archive-task-#{task.id}", method: :put %>
+          <% end %>
+          <% if current_user && task.user_id == current_user.id && task.status == 'In Progress' %>
+            <%= button_to 'Done', task_done_path(task), id: "done-task-#{task.id}", method: :put %>
+            <%= button_to 'X', task_archive_path(task), id: "archive-task-#{task.id}", method: :put %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>
 
 <%= link_to(new_project_task_path(@project.id), class: 'navigation') do %>
   <%= fa_icon 'plus' %>

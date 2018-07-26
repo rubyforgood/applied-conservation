@@ -3,36 +3,33 @@ import {Creatable} from 'react-select';
 import 'react-select/dist/react-select.css';
 
 export default class Autocomplete extends React.Component {
-  state = {
-    selectedOption: {
-      value: this.props.value,
-      label: this.props.suggestions[this.props.value] || this.props.value,
-    },
+  constructor(props) {
+    super(props)
+    this.state = {selectedValue: props.value}
   }
 
   handleChange = (selectedOption) => {
-    this.setState({ selectedOption });
+    this.setState({selectedValue: selectedOption.value})
   }
 
   convertSuggestions = () => {
-    const {suggestions} = this.props
-
-    return Object.keys(suggestions).map(suggestion =>
-      ({ value: suggestion, label: suggestions[suggestion]})
+    return this.props.suggestions.map(suggestion =>
+      ({ value: suggestion, label: suggestion})
     )
   }
 
   render() {
-    const { selectedOption } = this.state
-    const { suggestions, name, id, className }= this.props
+    const { selectedValue } = this.state
+    const {name, id, className }= this.props
     return (
       <Creatable
         id={id}
         name={name}
         className={className}
-        value={selectedOption}
+        value={{value: selectedValue, label: selectedValue}}
         onChange={this.handleChange}
         options={this.convertSuggestions()}
+        placeholder={'Select a suggestion or create your own...'}
       />
     );
   }

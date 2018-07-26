@@ -5,6 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
+gem 'activeadmin'
 gem 'best_in_place', '~> 3.0.1'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'breadcrumbs_on_rails'

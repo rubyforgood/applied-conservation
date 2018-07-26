@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 feature 'Task management' do
-  include Warden::Test::Helpers
-  Warden.test_mode!
   let(:task_one_name) { 'TEST TASK 1' }
   let(:task_two_name) { 'TEST TASK 2' }
   let(:task_three_name) { 'TEST TASK 3' }
@@ -16,7 +14,7 @@ feature 'Task management' do
   let!(:task_three) { create(:task, name: task_three_name, project: project, user: user, status: 'In Progress') }
 
   before do
-    login_as(user, scope: :user)
+    sign_in(user)
   end
 
   scenario 'User can add a new Task' do

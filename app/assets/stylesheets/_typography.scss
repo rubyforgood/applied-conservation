@@ -1,15 +1,8 @@
 @import "mixins";
 .heading {
 	section & {
-		color: mix($color-slate, $color-offwhite, 95%);
 		font-weight: 500;
 	}
-}
-
-.header-link {
-  >h2 {
-    color: #fcfcf7;
-  }
 }
 
 .has-sidelines {

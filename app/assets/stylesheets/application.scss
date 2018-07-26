@@ -11,13 +11,17 @@
  * It is generally better to create a new file per style scope.
  *
 */
-@import "font-awesome",
-"vars",
+@import "vars",
 "base",
+"app_header",
+"alerts",
 "buttons",
 "links",
 "forms",
 "typography",
 "tables",
+"login",
 "layout/page",
-"layout/project-view";
+"layout/project-view",
+"project_side_bar",
+"project_nav_bar";

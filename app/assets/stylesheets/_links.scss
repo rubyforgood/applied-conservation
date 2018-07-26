@@ -16,7 +16,27 @@ a.navigation {
   }
 }
 
-a.heading {
+a.project-heading-link {
   text-decoration: none;
   color: $font-color;
+  font-family: $font-sans;
+  font-weight: normal;
+  font-size: 2rem;
+}
+
+a.delete {
+  cursor: pointer;
+  font-family: $font-base;
+  font-weight: bold;
+  color: $color-error;
+  text-decoration: none;
+  border-bottom: 2px solid $color-error;
+
+  &:hover {
+    color: darken($color-error, 10%);
+  }
+
+  &:visited {
+    color: $color-error;
+  }
 }
