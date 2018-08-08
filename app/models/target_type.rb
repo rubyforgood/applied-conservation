@@ -1,7 +1,6 @@
 class TargetType < ApplicationRecord
   has_many :targets
   has_many :default_health_attributes
-  has_many :health_attributes
 
   def icon_name
     case name
@@ -19,5 +18,4 @@ class TargetType < ApplicationRecord
       'question'
     end
   end
-
 end

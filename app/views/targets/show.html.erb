@@ -4,7 +4,33 @@
     <%= link_to 'Edit', edit_target_path(@target),
                 class: 'navigation',
                 id: "edit-target-#{@target.id}",
-                'aria-label' => "Edit Target #{@target.name}"%>
+                'aria-label' => "Edit Target #{@target.name}" %>
   </header>
-  <%= render partial: 'health_assessments/index', locals: {health_assessments: @target.health_assessments}%>
+  <section class="health-attributes">
+    <h3>Health Attributes</h3>
+    <table class="index-table">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Rating</th>
+        <th/>
+      </tr>
+      </thead>
+      <tbody>
+      <% @target.health_attributes.each do |health_attr| %>
+        <tr>
+          <th scope="row"><%= link_to health_attr.name, health_attribute_path(health_attr) %></th>
+          <td/>
+          <td>
+            <%= link_to('Delete', health_attr, method: :delete, id: "delete-health-attribute-#{health_attr.id}") %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>»
+    <%= link_to(new_target_health_attribute_path(@target.id), class: 'navigation') do %>
+      <%= fa_icon 'plus' %>
+      Add Health Attribute
+    <% end %>
+  </section>
 </section>

@@ -4,7 +4,7 @@ module ApplicationHelper
   def target_tab?
     return 'active' if [
       TargetsController,
-      HealthAssessmentsController
+      HealthAttributesController
     ].include?(request.controller_class)
     ''
   end

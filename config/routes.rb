@@ -11,13 +11,13 @@ Rails.application.routes.draw do
     resources :tasks, only: [:new, :index]
   end
   resources :targets, only: [:create, :show, :update, :edit] do
-    resources :health_assessments, only: [:new]
+    resources :health_attributes, only: [:new]
   end
   resources :tasks, only: [:create, :show, :update, :edit] do
     put :pickup
     put :done, :archive
   end
-  resources :health_assessments, only: [:create, :show, :update, :edit, :destroy]
+  resources :health_attributes
 
   ActiveAdmin.routes(self)
   devise_for :users

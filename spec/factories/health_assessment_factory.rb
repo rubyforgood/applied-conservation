@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :health_assessment do
-    name 'Test Health Assessment'
     health_attribute
     association :created_by, factory: [:user]
     association :updated_by, factory: [:user]

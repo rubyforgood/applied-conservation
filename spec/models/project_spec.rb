@@ -1,5 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe Project, type: :model do
+describe Project, type: :model do
+  let!(:project) { create(:project) }
+
   it { should have_many(:targets) }
+  it { expect(project).to validate_presence_of :name }
 end

@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2018_07_16_028340) do
-=======
 ActiveRecord::Schema.define(version: 2018_07_20_171915) do
->>>>>>> master
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,7 +60,7 @@ ActiveRecord::Schema.define(version: 2018_07_20_171915) do
   end
 
   create_table "health_attributes", force: :cascade do |t|
-    t.bigint "default_health_attributes_id"
+    t.bigint "default_health_attribute_id"
     t.bigint "target_id", null: false
     t.string "name"
     t.string "description"
@@ -73,7 +69,7 @@ ActiveRecord::Schema.define(version: 2018_07_20_171915) do
     t.bigint "created_by_id", null: false
     t.bigint "updated_by_id", null: false
     t.index ["created_by_id"], name: "index_health_attributes_on_created_by_id"
-    t.index ["default_health_attributes_id"], name: "index_health_attributes_on_default_health_attributes_id"
+    t.index ["default_health_attribute_id"], name: "index_health_attributes_on_default_health_attribute_id"
     t.index ["target_id"], name: "index_health_attributes_on_target_id"
     t.index ["updated_by_id"], name: "index_health_attributes_on_updated_by_id"
   end
@@ -159,11 +155,8 @@ ActiveRecord::Schema.define(version: 2018_07_20_171915) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-<<<<<<< HEAD
     t.bigint "project_id"
-=======
     t.boolean "admin", default: false
->>>>>>> master
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["project_id"], name: "index_users_on_project_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -174,7 +167,7 @@ ActiveRecord::Schema.define(version: 2018_07_20_171915) do
   add_foreign_key "default_health_ratings", "health_rating_types"
   add_foreign_key "health_assessments", "health_attributes"
   add_foreign_key "health_assessments", "health_ratings"
-  add_foreign_key "health_attributes", "default_health_attributes", column: "default_health_attributes_id"
+  add_foreign_key "health_attributes", "default_health_attributes"
   add_foreign_key "health_attributes", "targets"
   add_foreign_key "health_ratings", "default_health_ratings"
   add_foreign_key "health_ratings", "health_attributes"

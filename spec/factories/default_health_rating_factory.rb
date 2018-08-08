@@ -4,5 +4,6 @@ FactoryBot.define do
     default_health_attribute
     association :created_by, factory: [:user]
     association :updated_by, factory: [:user]
+    sequence(:description) { |n| "Test DefaultHealthRating #{n}" }
   end
 end
