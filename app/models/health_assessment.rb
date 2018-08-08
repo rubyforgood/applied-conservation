@@ -6,6 +6,8 @@ class HealthAssessment < ApplicationRecord
 
   # belongs_to :target
 
-  validates :name, presence: true
-
+  # validates :name, presence: true
+  def name
+    health_attribute.name + " assessment"
+  end
 end

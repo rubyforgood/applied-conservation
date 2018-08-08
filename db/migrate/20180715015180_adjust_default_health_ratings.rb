@@ -4,7 +4,7 @@ class AdjustDefaultHealthRatings < ActiveRecord::Migration[5.2]
     remove_column :default_health_ratings, :value, :string
     remove_column :default_health_ratings, :weight, :float
     remove_column :default_health_ratings, :locked, :boolean
-    remove_index :default_health_ratings, :target_type_id
+    # remove_index :default_health_ratings, :target_type_id
     remove_column :default_health_ratings, :target_type_id, :integer
 
     add_column :default_health_ratings, :author_note, :string
