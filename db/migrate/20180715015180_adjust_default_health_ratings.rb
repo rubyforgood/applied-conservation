@@ -8,12 +8,7 @@ class AdjustDefaultHealthRatings < ActiveRecord::Migration[5.2]
 
     add_column :default_health_ratings, :author_note, :string
 
-    add_column :default_health_ratings, :created_at, :datetime, null: false
-    add_column :default_health_ratings, :updated_at, :datetime, null: false
-
     add_reference :default_health_ratings, :default_health_attribute, index: true, null: true, foreign_key: true
     add_reference :default_health_ratings, :health_rating_type, index: true, null: true, foreign_key: true
-    add_reference :default_health_ratings, :created_by, null: false, index: true, foreign_table_name: :users
-    add_reference :default_health_ratings, :updated_by, null: false, index: true, foreign_table_name: :users
   end
 end
