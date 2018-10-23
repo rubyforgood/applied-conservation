@@ -8,10 +8,8 @@ before_script:
   - npm i -g yarn
   - yarn
   - ./bin/webpack
-  - gem install rubocop
   - bundle exec rake db:create db:schema:load db:migrate
 script:
-  - rubocop
   - bin/rake
 sudo: required
 dist: trusty
