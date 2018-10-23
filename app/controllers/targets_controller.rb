@@ -20,7 +20,7 @@ class TargetsController < ApplicationController
   def create
     @target = Target.new(target_params)
     if @target.save
-      TargetService.new(@target, current_user).create
+      TargetService.new(@target).create
       flash[:notice] = 'Target created'
       redirect_to target_path(@target)
     else

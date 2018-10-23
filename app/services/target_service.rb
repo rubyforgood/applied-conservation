@@ -1,7 +1,6 @@
 class TargetService
-  def initialize(target, current_user)
+  def initialize(target)
     @target = target
-    @current_user = current_user
   end
 
   def create
@@ -18,8 +17,9 @@ class TargetService
     default_health_attributes.each do |attr|
       health_attribute = @target.health_attributes.create!(name: attr.name,
                                                            default_health_attribute: attr,
-                                                           created_by: @current_user,
-                                                           updated_by: @current_user)
+                                                           created_by: attr.created_by,
+                                                           ### FIXME -- should be current_user
+                                                           updated_by: attr.updated_by)
       health_attribute.create_health_assessments
     end
   end

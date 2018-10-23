@@ -1,11 +1,10 @@
 require 'rails_helper'
 
 describe TargetService do
-  let!(:user) { create(:user) }
   describe '#create' do
     it 'creates a new target' do
       target = FactoryBot.build :target
-      target_service = TargetService.new target, user
+      target_service = TargetService.new target
 
       expect { target_service.create }.to change(Target, :count).by 1
     end
@@ -18,7 +17,7 @@ describe TargetService do
       it 'generates a list of health_attributes based on the given target_type' do
         default_health_attribute = FactoryBot.create(:default_health_attribute)
         target = FactoryBot.build(:target, target_type: default_health_attribute.target_type)
-        target_service = TargetService.new target, user
+        target_service = TargetService.new target
 
         expect { target_service.create }.to change(HealthAttribute, :count).by 1
 
@@ -26,14 +25,12 @@ describe TargetService do
         health_attribute = target.health_attributes.last
         expect(health_attribute.default_health_attribute).to eq default_health_attribute
         expect(health_attribute.name).to eq default_health_attribute.name
-        expect(health_attribute.created_by).to eq user
-        expect(health_attribute.updated_by).to eq user
       end
 
       it 'generates current, projected future with NO action, and projected future with action health_assessment for each health_attribute' do
         default_health_attribute = FactoryBot.create(:default_health_attribute)
         target = FactoryBot.build(:target, target_type: default_health_attribute.target_type)
-        target_service = TargetService.new target, user
+        target_service = TargetService.new target
 
         expect { target_service.create }.to change(HealthAssessment, :count).by 3
 
@@ -46,14 +43,14 @@ describe TargetService do
 
       it 'does not generate any health_attributes when target has no target_type' do
         target = FactoryBot.build(:target, target_type: nil)
-        target_service = TargetService.new target, user
+        target_service = TargetService.new(target)
 
         expect { target_service.create }.to_not change(DefaultHealthAttribute, :count)
       end
     end
 
     describe 'target_params are not valid' do
-      let(:target_service) { TargetService.new FactoryBot.build(:target, project: nil), user }
+      let(:target_service) { TargetService.new(FactoryBot.build(:target, project: nil)) }
 
       it 'does not create a new target' do
         expect { target_service.create }.to_not change(Target, :count)

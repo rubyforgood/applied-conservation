@@ -19,16 +19,28 @@ ActiveRecord::Schema.define(version: 2018_07_20_171915) do
     t.string "name"
     t.string "description"
     t.bigint "target_type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "created_by_id", null: false
+    t.bigint "updated_by_id", null: false
+    t.index ["created_by_id"], name: "index_default_health_attributes_on_created_by_id"
     t.index ["target_type_id"], name: "index_default_health_attributes_on_target_type_id"
+    t.index ["updated_by_id"], name: "index_default_health_attributes_on_updated_by_id"
   end
 
   create_table "default_health_ratings", force: :cascade do |t|
     t.string "description"
     t.string "author_note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "default_health_attribute_id"
     t.bigint "health_rating_type_id"
+    t.bigint "created_by_id", null: false
+    t.bigint "updated_by_id", null: false
+    t.index ["created_by_id"], name: "index_default_health_ratings_on_created_by_id"
     t.index ["default_health_attribute_id"], name: "index_default_health_ratings_on_default_health_attribute_id"
     t.index ["health_rating_type_id"], name: "index_default_health_ratings_on_health_rating_type_id"
+    t.index ["updated_by_id"], name: "index_default_health_ratings_on_updated_by_id"
   end
 
   create_table "health_assessments", force: :cascade do |t|
