@@ -14,6 +14,7 @@
     background-color: $color-primary;
     padding: 1rem;
     margin-bottom: 1rem;
+    border-radius: 0.7em;
   }
 }
 
@@ -24,5 +25,16 @@
 .form-footer {
   .login-button {
     width: 100%;
+    width: 10em;
+    height: 2.3em;
+    min-width: 4em;
+    border: 0.2em;
+    border-radius: 0.9em;
+    background-color: $color-primary;
   }
+}
+
+.new-user {
+  padding-left: 2em;
+  align-self: left;
 }
