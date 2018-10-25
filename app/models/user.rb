@@ -5,7 +5,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  belongs_to :project, optional: true
+  has_and_belongs_to_many :projects
   has_many :tasks
   has_many :default_health_attributes_as_creator, inverse_of: :created_by, class_name: 'DefaultHealthAttribute',
                                                   foreign_key: :created_by_id, dependent: :restrict_with_error
