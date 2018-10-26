@@ -25,8 +25,8 @@ ruby and Postgresql.
 ```
 gem install bundler
 bundle install
-yarn
-bundle exec rake db:create db:schema:load db:migrate
+yarn install
+bundle exec rake db:create db:schema:load db:migrate db:seed
 bin/webpack
 rails s
 ```
@@ -47,4 +47,3 @@ Run the tests with `bin/rake` or `rspec`
 ### JS
 
 Run the tests with `yarn test` or `yarn test-watch`
-
