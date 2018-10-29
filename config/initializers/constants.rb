@@ -33,4 +33,21 @@ module Constants
     'Plant Species or Community',
     'Other',
   ].freeze
+
+  DEFAULT_HEALTH_ATTRIBUTES = [
+    'pH',
+    'temperature',
+    'salinity',
+    'nutrients',
+    'species diversity',
+    'seagrass condition',
+    'flow',
+    'invasive species',
+    'plant cover',
+    'soil quality',
+    'wind erosion',
+    'soil erosion'
+    'population growth',
+    'Other',
+  ].freeze
 end
