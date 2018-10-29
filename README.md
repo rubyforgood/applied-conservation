@@ -6,7 +6,7 @@ An application to help organize and plan reservation projects.
 
 ---
 
-## Instalation
+## Installation
 
 #### Ruby & Rails versions
 
@@ -31,7 +31,7 @@ bin/webpack
 rails s
 ```
 
-### Javascript development
+### JavaScript development
 
 You can run `bin/webpack-dev-server` to run the "hot" webpack server while working
 on any React components.
