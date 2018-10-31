@@ -46,7 +46,7 @@ module Constants
     'plant cover',
     'soil quality',
     'wind erosion',
-    'soil erosion'
+    'soil erosion',
     'population growth',
     'Other',
   ].freeze
