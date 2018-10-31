@@ -1,13 +1,17 @@
 require 'rails_helper'
 
-feature 'HealthRatingStandard' do
+feature 'DefaultHealthRating' do
   let(:file) { Rating.create(name: 'Poor', score: 0.01, weight: 2) }
 
-  scenario 'User can import a HealthRatingStandards csv' do
-    visit import_health_rating_standards_path
+  before do
+    sign_in(create(:user))
+  end
+
+  scenario 'User can import a DefaultHealthRating csv' do
+    visit import_default_health_ratings_path
 
     expect(page).to have_css('table#records tbody tr', count: 0)
-    attach_file 'ratings', 'spec/fixtures/files/health_rating_standards.csv'
+    attach_file('file_upload', 'spec/fixtures/files/default_health_ratings.csv', visible: false)
     click_button 'Upload'
 
     expect(page).to have_css('table#records tbody tr', count: 3)

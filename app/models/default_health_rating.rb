@@ -8,4 +8,6 @@ class DefaultHealthRating < ApplicationRecord
   belongs_to :updated_by, optional: false, class_name: 'User', foreign_key: :updated_by_id,
                           inverse_of: :default_health_ratings_as_updater
   has_many :health_ratings
+
+  delegate :target_type, to: :default_health_attribute
 end

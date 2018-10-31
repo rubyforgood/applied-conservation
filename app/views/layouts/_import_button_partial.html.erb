@@ -9,7 +9,7 @@
       <tr>
         <td>
           <%=  form_tag({action: :import}, multipart: true) do %>
-            <%= file_field_tag 'ratings' %>
+            <%= file_field_tag 'file_upload', id: "file_upload" %>
             <%= submit_tag("Upload") %>
           <% end %>
         </td>

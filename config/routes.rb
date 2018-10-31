@@ -18,9 +18,9 @@ Rails.application.routes.draw do
     put :done, :archive
   end
   resources :health_attributes
-  
-  get  '/health_rating_standards/import', to: 'health_rating_standards#import',     as: 'import_health_rating_standards'
-  post '/health_rating_standards/import', to: 'health_rating_standards#import_csv', as: ''
+
+  get  '/default_health_ratings/import', to: 'default_health_ratings#import',     as: 'import_default_health_ratings'
+  post '/default_health_ratings/import', to: 'default_health_ratings#import_csv', as: ''
 
   ActiveAdmin.routes(self)
   devise_for :users
