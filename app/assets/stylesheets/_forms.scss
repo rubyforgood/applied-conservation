@@ -40,6 +40,7 @@
   form {
     flex: 2;
     max-width: 50%;
+    
   }
 
   aside {
@@ -61,7 +62,7 @@
 }
 
 .form-field {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   cursor: pointer;
   display: block;
   width: 70%;
@@ -73,6 +74,11 @@
   padding-left: .5rem;
 }
 
+.new-user {
+  padding-left: 2em;
+  align-self: left;
+}
+
 .Select .Select-control {
   border: none;
 }
@@ -80,4 +86,9 @@
 textarea.form-field {
   height: 3rem;
   padding: .5rem;
+}
+
+.form-new-user {
+  padding-left: 2.2em;
+  align-self: left;
 }

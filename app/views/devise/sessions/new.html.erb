@@ -1,14 +1,10 @@
 <section class="login-section">
   <img class="logo" alt="turboCAP" src=<%= asset_path('turbocap-logo.png') %>/>
 
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <h2 class="login-heading">Log in</h2>
-
-    <%= f.label :email, class: 'form-label' %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-field' %>
-
-    <%= f.label :password, class: 'form-label' %>
-    <%= f.password_field :password, autocomplete: "off", class: 'form-field' %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => { :class => 'form-new-user'} ) do |f| %>
+    <%= f.email_field :email, placeholder: "E-mail", autofocus: true, autocomplete: "email", class: 'form-field' %>
+    
+    <%= f.password_field :password, placeholder: "Password", autocomplete: "off", class: 'form-field' %>
 
     <% if devise_mapping.rememberable? -%>
       <%= f.check_box :remember_me %>
@@ -16,7 +12,7 @@
     <% end -%>
 
     <div class="form-footer">
-      <%= f.submit "Log in", class: 'login-button' %>
+      <%= f.submit "Login", class: 'login-button' %>
     </div>
 
     <%= render "devise/shared/links" %>
