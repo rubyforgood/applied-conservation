@@ -1,10 +1,12 @@
+[![View performance data on Skylight](https://badges.skylight.io/status/YXisuAn0Mhjx.svg?token=eiduhCn1sTWYwLsdC-8NcDtsPjdzfm3ISdDY64SBkps)](https://www.skylight.io/app/applications/YXisuAn0Mhjx)
+
 # Applied Conservation
 
 An application to help organize and plan reservation projects.
 
 ---
 
-## Instalation
+## Installation
 
 #### Ruby & Rails versions
 
@@ -23,13 +25,13 @@ ruby and Postgresql.
 ```
 gem install bundler
 bundle install
-yarn
-bundle exec rake db:create db:schema:load db:migrate
+yarn install
+bundle exec rake db:create db:schema:load db:migrate db:seed
 bin/webpack
 rails s
 ```
 
-### Javascript development
+### JavaScript development
 
 You can run `bin/webpack-dev-server` to run the "hot" webpack server while working
 on any React components.
@@ -45,4 +47,3 @@ Run the tests with `bin/rake` or `rspec`
 ### JS
 
 Run the tests with `yarn test` or `yarn test-watch`
-

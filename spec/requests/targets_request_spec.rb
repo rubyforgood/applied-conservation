@@ -1,17 +1,74 @@
 require 'rails_helper'
 
 describe 'Target Requests', type: :request do
-  let!(:project) { FactoryBot.create(:project) }
+  let!(:project) { create(:project) }
 
-  describe '#POST create' do
-    it 'returns an 302 (FOUND) status and redirects to the target show' do
-      post "/projects/#{project.id}/targets",
+  before do
+    sign_in(create(:user))
+  end
+
+  describe 'POST create' do
+    it 'creates a new target and redirects to the target show page' do
+      post '/targets',
            params: {
-             target: { project_id: project.id, name: 'new target' }
+             project_id: project.id,
+             target: { name: 'new target' }
            }
 
-      expect(response).to have_http_status :found
-      expect(response).to redirect_to(project_target_url(project, Target.last))
+      target = Target.last
+      expect(target.project).to eq project
+      expect(response).to redirect_to(target_url(target))
+    end
+
+    it 'does not create a new target and sends an error flash message when invalid params' do
+      expect do
+        post '/targets',
+             params: {
+               project_id: project.id,
+               target: { name: '' }
+             }
+      end.to_not change(Target, :count)
+
+      expect(flash[:alert]).to be_present
+    end
+  end
+
+  describe 'GET edit' do
+    let(:target) { create(:target) }
+
+    it 'renders the edit template' do
+      get edit_target_path(target)
+
+      expect(response).to render_template 'edit'
+    end
+  end
+
+  describe 'PUT update' do
+    let(:target) { create(:target) }
+
+    it 'updates the target and sends a success flash message' do
+      put "/targets/#{target.id}",
+          params: {
+            project_id: project.id,
+            target: { name: 'Name' }
+          }
+
+      target.reload
+      expect(target.name).to eq 'Name'
+
+      expect(flash[:notice]).to be_present
+    end
+
+    it 'does not update the target and sends an error flash message when invalid params' do
+      expect do
+        put "/targets/#{target.id}",
+            params: {
+              project_id: project.id,
+              target: { name: '' }
+            }
+      end.to_not change(target, :name)
+
+      expect(flash[:alert]).to be_present
     end
   end
 end

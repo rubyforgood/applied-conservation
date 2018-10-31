@@ -1,0 +1,57 @@
+.logo {
+  height: 5rem;
+  width: 9rem;
+}
+
+.app-header {
+  background-color: $color-primary;
+  color: $font-color-light;
+  width: 100%;
+  padding: .5rem 0;
+
+  .app-header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: $page-min-width;
+    max-width: $page-max-with;
+    margin: 0 auto;
+  }
+}
+
+.dropbtn {
+  background-color: transparent;
+  color: $font-color-light;
+  font-size: 1.2rem;
+  border: none;
+  padding: 0 .5rem;
+}
+
+.user-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.user-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: $app-background-color;
+  width: 14rem;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  margin: 0;
+  list-style-type: none;
+  padding: 0;
+  color: $font-color;
+  right: 0;
+  z-index: 1;
+
+  .user-dropdown-item {
+    padding: 1rem;
+  }
+}
+
+/* Change color of dropdown links on hover */
+.user-dropdown-content li:hover {background-color: darken($app-background-color, 5%);}
+
+/* Show the dropdown menu on hover */
+.user-dropdown:hover .user-dropdown-content {display: block;}

@@ -8,10 +8,13 @@ before_script:
   - npm i -g yarn
   - yarn
   - ./bin/webpack
-  - gem install rubocop
   - bundle exec rake db:create db:schema:load db:migrate
 script:
-  - rubocop
   - bin/rake
+sudo: required
+dist: trusty
 addons:
   chrome: stable
+before_install:
+  - # start your web application and listen on `localhost`
+  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &

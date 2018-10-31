@@ -1,12 +1,16 @@
 .index-table {
-  tr > th {
-    a {
-      font-size: 1.1rem;
-      font-weight: bold;
-    }
-  }
+  display: table;
+  border-spacing: 0;
 
   th, td {
-    padding: .5rem;
+    border-collapse: collapse;
+    padding: 1rem 1rem;
+    text-align: start;
   }
 }
+
+td.icon {
+  font-size: 1.7rem;
+  padding-right: 0;
+}
+

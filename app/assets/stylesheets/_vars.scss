@@ -4,25 +4,20 @@ $font-sans: 'Lato', sans-serif;
 
 $font-base: $font-sans;
 $font-display: $font-slab;
+$font-color: #3a3a3a;
+$font-color-lighter: #535358;
+$font-color-light: #fff;
+$app-background-color: #fcfcf7;
 
-// COLOR PALETTE
-$color-thyme: #476144;
-$color-sage: #668063;
-$color-mustard: #dde2a4;
-$color-slate: #535358;
-$color-cranberry: #700606;
-$color-tangerine: #cc5104;
-$color-lemon: #f2c641;
+$color-primary: #00695c;
+$color-secondary: #dde2a4;
+$color-primary-action: #3949ab;
+$color-error: #8C2420;
+$color-error-background: #FCD9D8;
+$color-success-background: #DCEFDD;
+$color-success: #2A5A2D;
 
-$color-offwhite: #fcfcf7;
-// $color-offwhite: #fcfcfc;
-$color-offblack: darken($color-slate, 10%);
+$page-padding: 2.5rem;
+$page-min-width: 70rem;
+$page-max-with: 80rem;
 
-$color-primary: $color-sage;
-$color-secondary: $color-mustard;
-$color-warn: $color-cranberry;
-$color-alert: $color-tangerine;
-$color-notice: $color-lemon;
-
-//Eliza added-- can remove... probably not important
-$page-side-margin: 2rem;

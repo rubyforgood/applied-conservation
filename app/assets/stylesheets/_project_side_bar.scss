@@ -1,0 +1,43 @@
+.status-sidebar {
+  width: 20%;
+  margin-right: 2rem;
+}
+
+.project-image {
+  border-radius: 5px;
+  background-image: image-url('yosemite_image');
+  min-height: 8rem;
+  min-width: 12rem;
+}
+
+.sidebar-header {
+  padding: 1rem;
+}
+
+.next-event {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0;
+  margin: 1rem;
+  border-top: lighten($font-color, 30%) 1px solid;
+
+  .event-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .date {
+    border: 3px solid $color-secondary;
+    border-radius: 8px;
+    margin-right: 1rem;
+    text-align: center;
+    width: 60px;
+    .month {
+      background: $color-secondary;
+      padding: 6px;
+      text-transform: uppercase;
+    }
+  }
+}

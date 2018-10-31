@@ -1,0 +1,20 @@
+<section class="login-section">
+  <img class="logo" alt="turboCAP" src=<%= asset_path('turbocap-logo.png') %>/>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => { :class => 'form-new-user'} ) do |f| %>
+    <%= f.email_field :email, placeholder: "E-mail", autofocus: true, autocomplete: "email", class: 'form-field' %>
+    
+    <%= f.password_field :password, placeholder: "Password", autocomplete: "off", class: 'form-field' %>
+
+    <% if devise_mapping.rememberable? -%>
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    <% end -%>
+
+    <div class="form-footer">
+      <%= f.submit "Login", class: 'login-button' %>
+    </div>
+
+    <%= render "devise/shared/links" %>
+  <% end %>
+</section>

@@ -1,24 +1,27 @@
-<h1>Projects</h1>
-
-<table>
-  <thead>
+<section class="page-section">
+  <h1>Projects</h1>
+  <table class="index-table">
+    <thead>
     <tr>
       <th colspan="3"></th>
     </tr>
-  </thead>
+    </thead>
 
-  <tbody>
+    <tbody>
     <% @projects.each do |project| %>
       <tr>
-        <td><%= project.name %></td>
-        <td><%= link_to 'Show', project %></td>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th scope="row"><%= link_to project.name, project, class: 'navigation' %></th>
+        <td><%= project.description %></td>
+        <td><%= link_to 'Delete', project, method: :delete, class: 'delete', data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
 
-<br>
-
-<%= link_to 'New Project', new_project_path %>
+  <div class="form-footer">
+    <%= link_to(new_project_path, class: 'navigation')  do %>
+      <%= fa_icon 'plus' %>
+      Add New Project
+    <% end %>
+  </div>
+</section>

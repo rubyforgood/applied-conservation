@@ -1,0 +1,22 @@
+<%= form_tag update_all_project_targets_path(@project), method: :put do |f| %>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @targets.each do |target| %>
+        <tr>
+          <td><%= text_field_tag "targets[#{target.id}][name]", target.name %></td>
+          <td><%= text_area_tag "targets[#{target.id}][description]", target.description %></td>
+          <td><%= select_tag "targets[#{target.id}][target_type_id]", options_from_collection_for_select(TargetType.all, :id, :name, target.target_type_id) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= submit_tag 'Save' %>
+<% end %>

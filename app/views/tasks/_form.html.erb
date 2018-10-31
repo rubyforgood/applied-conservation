@@ -1,6 +1,6 @@
-<h2 class="heading"><%= heading %></h2>
 <section class="form-section">
-  <%= form_for [@project, @task] do |f| %>
+  <%= form_for @task do |f| %>
+    <h2 class="heading page-heading"><%= heading %></h2>
     <%= f.label :name, class: "form-label" %>
     <%= f.text_field :name, class: 'form-field' %>
     <%= f.label :due_on, class: "form-label" %>
@@ -10,8 +10,9 @@
     <%= f.label :description, class: "form-label" %>
     <%= f.text_area :description, class: 'form-field' %>
 
+    <%= hidden_field_tag 'project_id', @project.id %>
+
     <div class="form-footer">
-      <%= link_to 'Back', @project %>
       <%= f.submit "Add Task", class: 'button-primary' %>
     </div>
   <% end %>

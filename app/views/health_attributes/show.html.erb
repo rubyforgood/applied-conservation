@@ -1,0 +1,11 @@
+<section class="page-section">
+  <header class="page-header">
+    <h2 class="heading page-heading"><%= @health_attribute.name %></h2>
+    <%= link_to(
+            'Edit',
+            edit_health_attribute_path(@health_attribute),
+            id: "edit-health-attribute-#{@health_attribute.id}",
+            class: 'navigation')
+    %>
+  </header>
+</section>

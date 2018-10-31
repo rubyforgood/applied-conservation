@@ -1,7 +1,7 @@
 // GLOBAL
 body {
-	background: $color-offwhite;
-	color: $color-offblack;
+	background: white;
+	color: $font-color;
 	font-family: $font-base;
 	font-size: 100%;
 	margin: 0px;
@@ -10,6 +10,16 @@ img {
 	height: auto;
 	max-width: 100%;
 }
+
+.main-section {
+  padding: $page-padding;
+  min-width: $page-min-width;
+  max-width: $page-max-with;
+  margin: 2rem auto;
+  background-color: $app-background-color;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
 .list-reset {
 	list-style: none;
 	padding-left: 0;
@@ -29,3 +39,30 @@ img {
 	// ⚠️ Using this class will hide content from the viewport AND from screenreaders; use sparingly and with thoughtful intention
 	display: none;
 }
+
+.breadcrumbs {
+  font-family: $font-base;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 2rem auto;
+  min-width: $page-min-width;
+  max-width: $page-max-with;
+
+  a {
+    cursor: pointer;
+    color: $color-primary-action;
+    text-decoration: none;
+    border-bottom: 2px solid $color-primary-action;
+
+    &:hover {
+      color: darken($color-primary-action, 20%);
+    }
+
+    &:visited {
+      color: $color-primary-action;
+    }
+  }
+}
+
+
+

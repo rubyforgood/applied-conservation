@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ProjectsController < ApplicationController
-  before_action :set_project, only: %i[show edit update]
+  before_action :load_project, only: %i[show edit update]
 
   def index
     @projects = Project.all
@@ -21,10 +21,11 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
 
     if @project.save
-      redirect_to @project, notice: 'Project successfully created.'
+      flash[:notice] = 'Project created'
+      redirect_to @project
     else
-      flash.now[:error] = @project.errors.full_messages
-      render :new, status: 422
+      flash.now[:alert] = @project.errors.full_messages
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -32,17 +33,20 @@ class ProjectsController < ApplicationController
 
   def update
     if @project.update_attributes(project_params)
-      redirect_to @project, notice: 'Project successfully updated.'
+      flash[:notice] = 'Project updated'
+      redirect_to @project
     else
-      flash.now[:error] = @project.errors.full_messages
-      render :edit, status: 422
+      flash.now[:alert] = @project.errors.full_messages
+      render :edit, status: :unprocessable_entity
     end
   end
 
   private
 
-  def set_project
+  def load_project
     @project = Project.find(params[:id])
+    add_breadcrumb 'Projects', :projects_path
+    add_breadcrumb @project.name, project_path(@project)
   end
 
   def project_params

@@ -1,0 +1,36 @@
+.flash {
+  min-width: $page-min-width;
+  max-width: $page-max-with;
+  margin: 0 auto;
+}
+.alert {
+  margin: .5rem auto;
+  max-width: 50rem;
+  padding: 1rem;
+  font-weight: 500;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  background-color: $color-error-background;
+  color: $color-error;
+}
+
+.alert-header {
+  font-weight: 600;
+}
+
+.alert-icon {
+  font-size: 2rem;
+  margin-right: 1rem;
+  font-family: FontAwesome, serif;
+}
+
+.alert-notice {
+  background-color: $color-success-background;
+  color: $color-success;
+}
+
+.alert-msg-list {
+  list-style: outside circle;
+  margin: 0;
+}

@@ -2,7 +2,7 @@ Constants::TARGET_TYPES.each do |name|
   TargetType.find_or_create_by!(name: name)
 end
 
-require_relative 'seeds/health_attribute_seeds'
+require_relative 'seeds/default_health_attribute_seeds'
 
 project1 = Project.find_or_create_by!(
   name: "Bob's Project",
@@ -29,3 +29,8 @@ Target.find_or_create_by!(
   description: "Emily's Lake is small lake outside Washington DC that is home to many unqiue and migratory birds. etc.",
   project: project2,
 )
+
+if Rails.env.development?
+  User.create!(email: 'greg@xample.com', password: 'qwerty', password_confirmation: 'qwerty', admin: true)
+  User.create!(email: 'david@xample.com', password: 'qwerty', password_confirmation: 'qwerty')
+end
