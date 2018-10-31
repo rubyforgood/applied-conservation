@@ -14,8 +14,19 @@ The application is tested and developed on Ruby 2.5.1 and Rails 5.2
 
 ### CONFIG KEYS
 
-To run the application locally you must get the `config/master.key` file or setup your
-own local SECRET_KEY.
+Members of the TurboCAP team can get the `config/master.key` file from another team member or you can generate your own:
+
+```bash
+ruby -rsecurerandom -e 'puts SecureRandom.hex' > config/master.key
+```
+
+This will let you edit the `config/credentials.yml.enc` file. We need to use a temporary secret key to appease Devise while we edit our credentials, so we'll set a `SECRET_KEY_BASE` environment variable for the duration of the `rails credentials:edit` command:
+
+```bash
+SECRET_KEY_BASE=abcdef rails credentials:edit
+```
+
+You don't need to put anything in this file. Rails will generate a proper `secret_key_base` for you, so you can just save and exit your editor after it loads.
 
 ### Development
 
