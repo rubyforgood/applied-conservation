@@ -3,6 +3,5 @@ FactoryBot.define do
     sequence(:email) { |n| "bender#{n}@isgre.at" }
     password 'password'
     password_confirmation 'password'
-    project
   end
 end
