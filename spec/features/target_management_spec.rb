@@ -34,7 +34,7 @@ feature 'Target management', js: true do
     expect(page.find('.hints')).to have_content('Start with Ecosystem Targets')
 
     # fill out form
-    fill_in_autosuggest('Name', with: 'NEW TARGET')
+    fill_in('Name', with: 'NEW TARGET')
     select(terrestrial_target_type.name, from: 'target[target_type_id]')
     fill_in('Description', with: 'TARGET DESCRIPTION')
     click_button('Save')
@@ -54,7 +54,7 @@ feature 'Target management', js: true do
 
     expect(page).to have_content "Edit #{target.name}"
 
-    fill_in_autosuggest('Name', with: 'EDITED TARGET NAME')
+    fill_in('Name', with: 'EDITED TARGET NAME')
     select('Terrestrial Ecosystem', from: 'target[target_type_id]')
     fill_in('Description', with: 'TARGET DESCRIPTION')
     click_button('Save')

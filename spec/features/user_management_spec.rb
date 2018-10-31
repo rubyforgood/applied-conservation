@@ -10,7 +10,7 @@ describe 'User Management', js: true do
     expect(page.find('.user-dropdown-content')).to have_content user.email
 
     click_link 'sign-out-link'
-    expect(page.find('h2')).to have_content 'Log in'
+    expect(find('.login-button').value).to eq 'Login'
   end
 
   describe 'admin panel' do
