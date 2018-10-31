@@ -1,0 +1,45 @@
+<div id="upload-form">
+  Upload default health ratings
+</div>
+
+<div id="upload-form">
+  <%= form_tag import_default_health_ratings_path, method: :post, multipart: true do %>
+    <%= render "layouts/import_button_partial" %>
+  <% end %>
+</div>
+
+<div id="index">
+  <table id="records">
+    <thead>
+      <tr>
+        <th>Target type</th>
+        <th>Default health attribute</th>
+        <th>Health rating type</th>
+        <th>Description</th>
+        <th>Author note</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @default_health_ratings.each do |default_health_rating| %>
+      <tr>
+        <td>
+          <%= default_health_rating.target_type.name %>
+        </td>
+        <td>
+          <%= default_health_rating.default_health_attribute.name %>
+        </td>
+        <td>
+          <%= default_health_rating.health_rating_type.name %>
+        </td>
+        <td>
+          <%= default_health_rating.description %>
+        </td>
+        <td>
+          <%= default_health_rating.author_note %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>
