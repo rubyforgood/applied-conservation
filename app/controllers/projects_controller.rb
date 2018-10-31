@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ProjectsController < ApplicationController
-  before_action :load_project, only: %i[show edit update]
+  before_action :load_project, only: %i[show edit update destroy]
 
   def index
     @projects = Project.all
@@ -38,6 +38,16 @@ class ProjectsController < ApplicationController
     else
       flash.now[:alert] = @project.errors.full_messages
       render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    if @project.destroy!
+      flash[:notice] = 'Project deleted'
+      redirect_to projects_path
+    else
+      flash.now[:alert] = @project.errors.full_messages
+      redirect_to projects_path
     end
   end
 
