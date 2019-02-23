@@ -96,7 +96,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.1.0)
+    concurrent-ruby (1.1.4)
     connection_pool (2.2.2)
     crass (1.0.4)
     devise (4.5.0)
@@ -353,4 +353,4 @@ RUBY VERSION
    ruby 2.5.1p57
 
 BUNDLED WITH
-   1.16.5
+   1.17.3
