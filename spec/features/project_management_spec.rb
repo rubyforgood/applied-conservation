@@ -1,13 +1,14 @@
 require 'rails_helper'
 
 feature 'Project management' do
-  let!(:project) { create(:project) }
+  let(:user) { create(:user) }
+  let!(:project) { create(:project, users: [user]) }
 
   before do
-    sign_in(create(:user))
+    sign_in(user)
   end
 
-  it 'User can view all projects and project details' do
+  it 'User can view all projects and project details that he belongs to' do
     visit root_path
 
     expect(page).to have_content 'Projects'

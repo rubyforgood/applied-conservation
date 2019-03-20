@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   before_action :load_project, only: %i[show edit update]
 
   def index
-    @projects = Project.all
+    @projects = policy_scope(Project)
   end
 
   def show
@@ -19,6 +19,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
+    @project.users << current_user
 
     if @project.save
       flash[:notice] = 'Project created'
@@ -44,7 +45,13 @@ class ProjectsController < ApplicationController
   private
 
   def load_project
-    @project = Project.find(params[:id])
+  begin
+    @project = policy_scope(Project).find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:error] = 'You\'re not allowed to access this project'
+    return redirect_to projects_path
+  end
+
     add_breadcrumb 'Projects', :projects_path
     add_breadcrumb @project.name, project_path(@project)
   end

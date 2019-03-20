@@ -6,8 +6,8 @@ feature 'Task management' do
   let(:task_three_name) { 'TEST TASK 3' }
   let(:user_email) { 'blah@blah.com' }
   let(:project_name) { 'TEST PROJECT' }
-  let(:project) { build(:project, name: project_name) }
   let(:user) { create(:user, email: user_email) }
+  let(:project) { build(:project, name: project_name, users: [user]) }
 
   let!(:task_one) { create(:task, name: task_one_name, project: project) }
   let!(:task_two) { create(:task, name: task_two_name, project: project, user: user) }

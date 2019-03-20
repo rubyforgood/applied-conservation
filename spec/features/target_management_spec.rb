@@ -2,13 +2,14 @@ require_relative './form_helpers'
 require 'rails_helper'
 
 feature 'Target management', js: true do
+  let(:user) { create(:user) }
   let(:target_one_name) { 'TEST TARGET ONE' }
   let(:target_two_name) { 'TEST TARGET TWO' }
-  let(:project) { create(:project) }
+  let(:project) { create(:project, users: [user]) }
   let!(:terrestrial_target_type) { TargetType.create(name: 'Terrestrial Ecosystem') }
 
   before do
-    sign_in(create(:user))
+    sign_in(user)
   end
 
   it 'User can view all targets for a Project' do
