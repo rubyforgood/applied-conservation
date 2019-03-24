@@ -5,12 +5,12 @@ FactoryBot.define do
 
     trait :complete do
       association :user
-      description 'Do it 7 times'
-      due_date Date.today
+      description { 'Do it 7 times' }
+      due_date { Date.today }
     end
 
     trait :archived do
-      status 'Archived'
+      status { 'Archived' }
     end
   end
 end

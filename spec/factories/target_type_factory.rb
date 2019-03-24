@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :target_type do
-    name 'River'
+    name { 'River' }
   end
 end
