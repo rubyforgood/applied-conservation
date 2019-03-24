@@ -10,7 +10,7 @@ An application to help organize and plan reservation projects.
 
 #### Ruby & Rails versions
 
-The application is tested and developed on Ruby 2.5.1 and Rails 5.2
+The application is tested and developed on Ruby 2.5.1 and Rails 5.2.
 
 ### CONFIG KEYS
 
@@ -30,8 +30,8 @@ You don't need to put anything in this file. Rails will generate a proper `secre
 
 ### Development
 
-To run the application locally for development follow the below commands after installing
-ruby and Postgresql.
+To run the application locally for development, follow the below commands after installing
+Ruby and Postgresql.
 
 ```
 gem install bundler
@@ -42,7 +42,7 @@ bin/webpack
 rails s
 ```
 
-### JavaScript development
+### JavaScript Development
 
 You can run `bin/webpack-dev-server` to run the "hot" webpack server while working
 on any React components.
