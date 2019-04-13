@@ -41,6 +41,7 @@ describe 'Project Requests', type: :request do
 
         expect(response).to have_http_status :found
         expect(response).to redirect_to(project_path(Project.last))
+        expect(Project.last.users.count).to eq 1
       end
     end
 
