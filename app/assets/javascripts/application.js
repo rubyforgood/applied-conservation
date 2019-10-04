@@ -18,4 +18,13 @@
 $(document).ready(function() {
   /* Activating Best In Place */
   jQuery(".best_in_place").best_in_place();
+
+  var isChange;
+  $("form :input").change(function() {
+    isChange = true;
+  });
+
+  $(window).on('beforeunload', function () {
+    if (isChange) return 'Are you sure you want to leave this page?';
+  });
 });
