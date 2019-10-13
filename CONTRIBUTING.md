@@ -12,13 +12,12 @@ rules to get in the way of that.
 [Code of Conduct](CODE_OF_CONDUCT.md)
 
 Here are the basic steps to submit a pull request. Make sure that you're working
-on an [open issue]–if the relevant issue doesn't exist, open it!
+on an [open issue](/rubyforgood/applied-conservation/issues) – if the relevant
+issue doesn't exist, open it!
 
-[open issue](open issue)
-
-1. Claim an issue on [our issue tracker][open issue] by assigning it to
-   yourself (core team member) or commenting. If the issue doesn't exist
-   yet, open it.
+1. Claim an issue on [our issue tracker](/rubyforgood/applied-conservation/issues)
+   by assigning it to yourself (core team member) or commenting. If the issue
+   doesn't exist yet, open it.
 1. Fork the repo.
 1. Run `./bin/setup`.
 1. Run the tests. We only take pull requests with passing tests, and it's great
