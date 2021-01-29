@@ -22,6 +22,24 @@
   }
 }
 
+.action-button {
+	width: 100%;
+  width: 10em;
+  height: 2.3em;
+  min-width: 4em;
+  border: 0.2em;
+  border-radius: 0.9em;
+  background-color: $color-primary;
+}
+
+.form-footer {
+  .action-button {
+    min-width: 4em;
+    width: 100%;
+    width: 10em;
+  }
+}
+
 .form-label {
   cursor: pointer;
   font-weight: bold;
