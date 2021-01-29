@@ -28,6 +28,6 @@ When we disagree, try to understand why. Disagreements, both social and technica
 
 If a participant engages in harassing behavior, the organizers may take any action they deem appropriate, including warning the offender or expulsion from the event with no refund. The organizers and volunteers will be introduced at the beginning of the event.
 
-We're people trying to make the world better.
+We're people who are trying to make the world better.
 
 _For our Code of Conduct we have based ours on the excellent one made by the Django Project._

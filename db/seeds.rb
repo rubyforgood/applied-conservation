@@ -26,7 +26,7 @@ project2 = Project.find_or_create_by!(
 Target.find_or_create_by!(
   name: "Emily's Lake",
   target_type_id: target_type.id,
-  description: "Emily's Lake is small lake outside Washington DC that is home to many unqiue and migratory birds. etc.",
+  description: "Emily's Lake is small lake outside Washington that is home to many unqiue and migratory birds. etc.",
   project: project2,
 )
 
