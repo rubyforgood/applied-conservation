@@ -36,4 +36,11 @@ feature 'Project management' do
 
     expect(page).to have_text('NEW PROJECT')
   end
+
+  it 'User can delete a project' do
+    visit projects_path
+    click_link 'Delete'
+
+    expect(page.find('.alert-notice')).to have_content 'Project deleted'
+  end
 end
